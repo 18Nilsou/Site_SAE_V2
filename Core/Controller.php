@@ -10,17 +10,19 @@ final class Controller
 
     public function __construct ($S_url, $A_postParams)
     {
-        // On élimine l'éventuel slash en fin d'URL sinon notre explode renverra une dernière entrée vide
-        if ('/' == substr($S_url, -1, 1)) {
-            $S_url = substr($S_url, 0, strlen($S_url) - 1);
-        }
+        if(!empty($S_url)) {
+            // On élimine l'éventuel slash en fin d'URL sinon notre explode renverra une dernière entrée vide
+            if ('/' == substr($S_url, -1, 1)) {
+                $S_url = substr($S_url, 0, strlen($S_url) - 1);
+            }
 
-        // On éclate l'URL, elle va prendre place dans un tableau
-        $A_urlToPeered = explode('/', $S_url);
+            // On éclate l'URL, elle va prendre place dans un tableau
+            $A_urlToPeered = explode('/', $S_url);
+        }
 
         if (empty($A_urlToPeered[0])) {
             // Nous avons pris le parti de préfixer tous les controleurs par "Controller"
-            $A_urlToPeered[0] = 'DefaultController';
+            $A_urlToPeered[0] = 'HomeController';
         } else {
             $A_urlToPeered[0] =  ucfirst($A_urlToPeered[0]) . 'Controller';
         }
@@ -53,20 +55,18 @@ final class Controller
     public function execute()
     {
         if (!class_exists($this->_A_peeredUrl['controller'])) {
-            throw new ControllerException($this->_A_peeredUrl['controller'] . " n'est pas un controleur valide.");
+            throw new ControllerException();
         }
 
         if (!method_exists($this->_A_peeredUrl['controller'], $this->_A_peeredUrl['action'])) {
-            throw new ControllerException($this->_A_peeredUrl['action'] . " du contrôleur " .
-                $this->_A_peeredUrl['controller'] . " n'est pas une action valide.");
+            throw new ControllerException();
         }
 
         $B_called = call_user_func_array(array(new $this->_A_peeredUrl['controller'],
             $this->_A_peeredUrl['action']), array($this->_A_urlParameters, $this->_A_postParams ));
 
         if (false === $B_called) {
-            throw new ControllerException("L'action " . $this->_A_peeredUrl['action'] .
-                " du contrôleur " . $this->_A_peeredUrl['controller'] . " a rencontré une erreur.");
+            throw new ControllerException();
         }
     }
 }

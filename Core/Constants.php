@@ -16,6 +16,9 @@ final class Constants
     const EXCEPTIONS_DIRECTORY  = '/Core/Exceptions/';
 
     const CONTROLLERS_DIRECTORY = '/Controllers/';
+    
+    const DATABASE_DIRECTORY = '/Core/Database/';
+    const PHPMAILER_DIRECTORY = '/Core/Phpmailer/';
 
 
     public static function rootDirectory() {
@@ -41,6 +44,11 @@ final class Constants
     public static function controllersDirectory() {
         return self::rootDirectory() . self::CONTROLLERS_DIRECTORY;
     }
+    public static function databseDirectory() {
+        return self::rootDirectory() . self::DATABASE_DIRECTORY;
+    }
 
-
+    public static function phpMailerDirectory() {
+        return self::rootDirectory() . self::PHPMAILER_DIRECTORY;
+    }
 }
