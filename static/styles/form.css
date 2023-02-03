@@ -1,0 +1,30 @@
+.signForm{
+    font-size: 120%;
+    color: whitesmoke;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    background-color: #252525;
+    border-radius: 2em;
+    padding: 4.5%;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+}
+
+input{
+    margin-bottom: 5px;
+    margin-top: 2px;
+    border-radius: 3em;
+}
+
+#submit{
+    width: 40%;
+    height: 3000%;
+}
+
+#submit:hover{
+    background-color: #54E86B;
+}
