@@ -6,6 +6,7 @@
         <title>Find the breach</title>
         <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
         <link rel="stylesheet" type="text/css" href="/static/styles/form.css">
+        <link rel="stylesheet" type="text/css" href="/static/styles/home.css">
     </head>
     <body>
         <?php View::show('standard/header'); ?>
