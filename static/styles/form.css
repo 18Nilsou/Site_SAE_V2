@@ -1,6 +1,10 @@
+.form-title{
+    text-align: center;
+}
+
 .signForm{
     font-size: 120%;
-    color: whitesmoke;
+    color: #ffffff;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -10,21 +14,37 @@
     width: 20%;
     background-color: #252525;
     border-radius: 2em;
-    padding: 4.5%;
+    padding: 3% 4.5% 4.5%;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    justify-content: center;
 }
 
-input{
+.id-form-input{
     margin-bottom: 5px;
     margin-top: 2px;
     border-radius: 3em;
+    height: 2em;
 }
 
-#submit{
-    width: 40%;
-    height: 3000%;
+.submit {
+    display: block;
+    margin: 10% auto 0;
+    width: 80%;
+    height: 3em;
+    border-radius: 4em;
 }
 
-#submit:hover{
+.submit:hover{
     background-color: #54E86B;
+}
+
+.redirections-sign a{
+    color: white;
+}
+
+.redirections-sign {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 80%;
+    text-align: center;
 }
