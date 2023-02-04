@@ -27,3 +27,9 @@
     width: 100%;
     font-size: 200%;
 }
+
+@media (max-width:900px) {
+    #subtitle-error {
+        font-size: 100%;
+    }
+}
