@@ -6,8 +6,8 @@ final class SigninController{
     }
 
     public function connectAction(Array $A_parametres = null, Array $A_postParams = null) : void{
-        var_dump($A_postParams);
-        $S_status = Users::connect($A_postParams['id']);
+        $S_status = Users::isUser($A_postParams);
+
         switch ($S_status) {
             case 'user':
             case 'admin':
@@ -15,8 +15,7 @@ final class SigninController{
                 header('Location: /home');
                 break;
             default:
-                View::show("/signin/form", $S_status);
+                header("Location: /signin");
         }
-        
     }
 }

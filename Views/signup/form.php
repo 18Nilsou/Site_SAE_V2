@@ -1,4 +1,4 @@
-<form class="signForm" method="post" action="signup/createAction">
+<form class="signForm" method="post" action="signup/register">
     <label for="id">Pseudo :</label>
     <input type="text" placeholder="Rentrez votre pseudo" name="id" class="input" required>
     <label for="id">eMail :</label>

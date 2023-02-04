@@ -1,4 +1,4 @@
-<?
+<?php
 final class Users extends Model{
 
     public static function connect(array $A_getParams):string{
@@ -12,5 +12,18 @@ final class Users extends Model{
             return "user";
         }
         return "Mot de passe ou Pseudo invalide";
+    }
+
+    public static function isUser(array $A_getParams):string{
+        $S_id = $A_getParams['id'];
+        $A_user = self::selectById($S_id);
+        $S_password = hash('sha512', $A_getParams['password']);
+        if ($A_user && $A_user['password']== $S_password) {
+            //if(Admins::selectById($S_id)) {
+            //    return 'admin';
+            //}
+            return 'user';
+        }
+        return 'visitor';
     }
 }

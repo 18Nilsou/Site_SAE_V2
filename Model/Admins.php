@@ -1,2 +1,4 @@
-<?
-final class Admins extends Model{}
+<?php
+final class Admins extends Model{
+
+}
