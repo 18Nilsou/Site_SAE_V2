@@ -7,7 +7,6 @@ final class SigninController{
 
     public function connectAction(Array $A_parametres = null, Array $A_postParams = null) : void{
         $S_status = Users::isUser($A_postParams);
-
         switch ($S_status) {
             case 'user':
             case 'admin':

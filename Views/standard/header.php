@@ -6,11 +6,17 @@
         </section>
         <section id="nav-links">
             <a href="/home">Accueil</a>
-            <a href="#">Télécharger</a>
-            <a href="/signin">Connexion</a>
             <?php
                 if (Session::check()) {
+                    if(Session::getSession()['status'] == 'admin') {
+                        echo '
+                        <a href="/admin">Administration</a>';
+                    }
+                    echo "<a href='#'>Télécharger</a>";
                     echo "<a href='/logout'>Déconnexion</a>";
+                } else {
+                    echo "<a href='/signup' >Télécharger</a>";
+                    echo "<a href='/signin'>Connexion</a>";
                 }
             ?>
         </section>

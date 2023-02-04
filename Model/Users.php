@@ -19,9 +19,9 @@ final class Users extends Model{
         $A_user = self::selectById($S_id);
         $S_password = hash('sha512', $A_getParams['password']);
         if ($A_user && $A_user['password']== $S_password) {
-            //if(Admins::selectById($S_id)) {
-            //    return 'admin';
-            //}
+            if(Admins::selectById($S_id)) {
+                return 'admin';
+            }
             return 'user';
         }
         return 'visitor';
