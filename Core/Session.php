@@ -18,7 +18,6 @@ final class Session
      * @return void
      */
     public static function start(string $S_status, string $S_id):void {
-        $_SESSION['user_id'] = Users::selectById($S_id)['user_id'];
         $_SESSION['id'] = $S_id;
         $_SESSION['status'] = $S_status;
     }

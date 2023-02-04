@@ -6,15 +6,15 @@
     <h3>Aperçu des pages de l'application</h3>
     <section id='screenshots'>
         <section class='page'>
-            <img src='/static/pictures/screenshots/screenshot1.png' alt=\"Page d'accueil\">
+            <img src='/static/pictures/screenshots/screenshot1.png' alt="Page d'accueil">
             <h4>Page d'accueil</h4>
         </section>
         <section class='page'>
-            <img src='/static/pictures/screenshots/screenshot1.png' alt=\"Page d'accueil\">
+            <img src='/static/pictures/screenshots/screenshot1.png' alt="Page d'accueil">
             <h4>Page de connexion</h4>
         </section>
         <section class='page'>
-            <img src='/static/pictures/screenshots/screenshot1.png' alt=\"Page d'accueil\">
+            <img src='/static/pictures/screenshots/screenshot1.png' alt="Page d'accueil">
             <h4>Page de jeu</h4>
         </section>
     </section>
@@ -26,7 +26,7 @@
         <section>
             <p>Vous devez vous identifier pour pouvoir télécharger l'application et jouer. Si vous n'avez pas de compte, vous pouvez en créer un.
              Cliquez sur le bouton ci-dessous pour accéder à la page de connexion/inscription.</p>
-            <a class='btn-how-to' href='#'><h3 class='btn-how-to-text'>Connexion || Créer un compte</h3></a>
+            <a class='btn-how-to' href='/signup'><h3 class='btn-how-to-text'>Connexion || Créer un compte</h3></a>
         </section>
     </section>
     <section class='how-to-use'>
