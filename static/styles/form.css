@@ -25,6 +25,7 @@
     margin-top: 2px;
     border-radius: 3em;
     height: 2em;
+    width: 100%;
 }
 
 .submit {
@@ -48,6 +49,27 @@
     margin-top: 5px;
     font-size: 80%;
     text-align: center;
+}
+
+.password-container {
+    position: relative;
+}
+
+.show-password-icon {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 20px;
+    color: #f9f9f9;
+    transition: all 0.2s;
+}
+
+
+#password-icon-off {
+    display: none;
 }
 
 @media (max-width:900px) {

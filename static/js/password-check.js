@@ -1,4 +1,4 @@
-document.querySelector('.submit').addEventListener('click', function(event) {
+document.querySelector('.submit').addEventListener('click', function() {
     const password = document.querySelector('#password');
     const passwordConfirm = document.querySelector('#password_confirm');
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_+=[\]{};':"\\|,.<>\/?])/;
