@@ -26,4 +26,18 @@ final class Users extends Model{
         }
         return 'visitor';
     }
+
+    public static function checkIfExistsByEmail(string $S_email):bool{
+        $A_user = self::selectByEmail($S_email);
+        return isset($A_user['id']);
+    }
+
+    public static function selectByEmail(string $S_email):array{
+        $O_con = Connection::initConnection();
+        $S_stmnt = "SELECT * FROM Users WHERE email = :email ";
+        $O_sth = $O_con->prepare($S_stmnt);
+        $O_sth -> bindValue(":email", $S_email, PDO::PARAM_STR);
+        $O_sth->execute();
+        return ($O_sth-> fetch());
+    }
 }

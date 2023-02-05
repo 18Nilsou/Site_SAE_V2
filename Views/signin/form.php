@@ -9,7 +9,7 @@
         <img class="show-password-icon" id="password-icon-on" src="/static/pictures/password-visibility-icon/visibility-on.png">
     </label>
     <p class="redirections-sign">Pas de compte ? <a href="/signup">Créez en un !</a></p>
-    <p class="redirections-sign"><a href="#">Mot de passe oublié</a></p>
+    <p class="redirections-sign"><a href="recievepassword">Mot de passe oublié</a></p>
     <input class="submit" type="submit" value="Se connecter">
 </form>
 <script type='text/javascript' src='/static/js/password-visibility.js'></script>

@@ -45,7 +45,7 @@ abstract class Model{
         return $B_state;
     }
 
-    public static function updateById(Array $A_postParams,$S_id ) : bool{
+    public static function updateById(Array $A_postParams, $S_id ) : bool{
         $O_con = Connection::initConnection();
 
         $S_keys = "";
@@ -86,6 +86,6 @@ abstract class Model{
         $S_stmnt = "SELECT * FROM ".get_called_class()." WHERE ID = ? ";
         $P_sth = $O_con->prepare($S_stmnt);
         $P_sth->execute(array($_id));
-        return ($P_sth->rowCount() > 0);
+        return ($P_sth -> fetchAll() > 0);
     }
 }

@@ -40,16 +40,16 @@ class Mailer
         $P_sentMail->Port = "587";
 
         //We give the user, i.e. the login of the GMAIL account
-        $P_sentMail->Username = "";
+        $P_sentMail->Username = "findthebreach.noreply@gmail.com";
 
         //We give the password that was generated in the security part of the GMAIL account
-        $P_sentMail->Password = "";
+        $P_sentMail->Password = "bpghsngrhhjqnznl";
 
         //The subject of the email
         $P_sentMail->Subject = $S_mailContent["subject"];
 
         //The person who sends the email
-        $P_sentMail->setFrom("");
+        $P_sentMail->setFrom("findthebreach.noreply@gmail.com");
 
         //We enable the page format (We can use page syntax, i.e. tags in the body of the mail and it will be recognized)
         $P_sentMail->isHTML(true);
