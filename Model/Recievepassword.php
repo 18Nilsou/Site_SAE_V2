@@ -19,8 +19,15 @@ final class Recievepassword extends Model{
     public static function checkToken(int $I_token, string $S_id){
         $A_user = self::selectById($S_id);
         if($A_user['token'] == $I_token){
-            return true;
+            $I_date = mktime(date("H"), date("i")-10, date("s"), date("m"), date("d"), date("Y"));
+            $S_date = date("Y-m-d H:i:s",$I_date);
+            if($S_date < $A_user['date']){
+                return true;
+            }
+            self::deleteByID($S_id);
         }
         return false;
     }
+
+
 }
