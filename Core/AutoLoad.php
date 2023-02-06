@@ -69,4 +69,3 @@ spl_autoload_register('AutoLoad::loadViewClasses');
 spl_autoload_register('AutoLoad::loadControllerClass');
 spl_autoload_register('AutoLoad::loadDatabaseClass');
 spl_autoload_register('AutoLoad::loadPHPMailerClasses');
-

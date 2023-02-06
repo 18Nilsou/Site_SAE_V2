@@ -25,14 +25,11 @@ View::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appe
 
 session_start();
 
-try
-{
+try{
     $O_controller = new Controller($S_urlToPeer, $A_postParams);
     $O_controller->execute();
-}
-catch (ControllerException $O_exception)
-{
-    $O_exception->getMessage();
+}catch (ControllerException $O_exception){
+    echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
 }
 
 

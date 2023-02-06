@@ -1,5 +1,3 @@
-<?php
- echo '
 <header>
     <nav>
         <section id="logo-title-container">
@@ -7,11 +5,22 @@
             <h1>Find the breach</h1>
         </section>
         <section id="nav-links">
-            <a href="#">Accueil</a>
-            <a href="#">Télécharger</a>
-            <a href="#">Connexion</a>
+            <a href="/home">Accueil</a>
+            <?php
+                if (Session::check()) {
+                    if(Session::getSession()['status'] == 'admin') {
+                        echo '
+                        <a href="/admin">Administration</a>';
+                    }
+                    echo "<a href='#'>Télécharger</a>";
+                    echo "<a href='/logout'>Déconnexion</a>";
+                } else {
+                    echo "<a href='#' >Télécharger</a>";
+                    echo "<a href='/signin'>Connexion</a>";
+                }
+            ?>
         </section>
-        <button id="burger-btn" onclick="this.classList.toggle(\'opened\');this.setAttribute(\'aria-expanded\', this.classList.contains(\'opened\'))" aria-label="Main Menu">
+        <button id="burger-btn" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
           <svg width="70" height="70" viewBox="0 0 100 100">
             <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
             <path class="line line2" d="M 20,50 H 80" />
@@ -19,5 +28,5 @@
           </svg>
         </button>
     </nav>
-    <script type=\'text/javascript\' src=\'/static/js/burger-menu.js\'></script>
-</header>';
+    <script type='text/javascript' src='/static/js/burger-menu.js'></script>
+</header>
