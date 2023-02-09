@@ -4,6 +4,10 @@
     <input class="id-form-input" type="text" placeholder="Votre pseudo" name="id" required>
     <label for="id">Email :</label>
     <input class="id-form-input" type="email" placeholder="Votre email" name="email" title="Entrez un email valide" required>
+    <label for="id">Nom :</label>
+    <input class="id-form-input" type="text" placeholder="Votre nom" name="lastname" title="Entrez votre nom" required>
+    <label for="id">Prénom :</label>
+    <input class="id-form-input" type="text" placeholder="Votre prénom" name="name" title="Entrez votre prénom" required>
     <label for="password">Mot de passe :</label>
     <label class="password-container">
         <input class="id-form-input" id="password" type="password" placeholder="Votre mot de passe" name="password" title="Au moins 12 caractères, un chiffre, une lettre majuscule, une minuscule et un caractère spécial" minlength="12" required >
