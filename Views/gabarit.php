@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="/static/styles/form.css">
         <link rel="stylesheet" type="text/css" href="/static/styles/home.css">
         <link rel="stylesheet" type="text/css" href="/static/styles/error.css">
+        <link rel="stylesheet" type="text/css" href="/static/styles/admin.css">
     </head>
     <body>
         <?php View::show('standard/header'); ?>

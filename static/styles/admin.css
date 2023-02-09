@@ -1,0 +1,30 @@
+.admin-btn {
+    border-top-left-radius: 0.75em;
+    border-top-right-radius: 0.75em;
+    border: none;
+    background-color: #eeeeee;
+    color: #000000;
+    font-size: 125%;
+}
+
+.tab h2{
+    margin: 0;
+    padding-top: 2%;
+    text-align: center;
+}
+
+#nav-admin button.active {
+    background-color: #9ca6ec;
+}
+
+.hide-tab {
+    display: none;
+}
+
+#nav-admin {
+    margin-top: 1%;
+}
+
+.tab {
+    background-color: #9ca6ec;
+}
