@@ -135,4 +135,6 @@ fabric.properties
 .history
 .ionide
 
+.DS_Store
+
 # End of https://www.toptal.com/developers/gitignore/api/phpstorm,visualstudiocode
