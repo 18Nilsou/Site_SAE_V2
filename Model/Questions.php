@@ -10,7 +10,8 @@ final class Questions extends Model{
         $O_sth->execute();
         $S_array = "<table><tr><th>Numéro</th><th>Titre</th><th>Consigne</th><th>Indice</th><th>Solution</th><th></th><th></th></tr>";
         while($A_question = $O_sth-> fetch()){
-            $S_array .= "<form action='questions/form' methode='POST'>
+            $S_array .= "<form action='questions' method='post'>
+                            <input type='hidden' name='id' value='".strval($A_question["id"])."'>
                             <input type='hidden' name='order_question' value='".$A_question["order_question"]."'>
                             <input type='hidden' name='room_id' value='".$A_question["room_id"]."'>
                             <tr>
@@ -26,6 +27,17 @@ final class Questions extends Model{
         }
         $S_array .= "</table>";
         return $S_array;
+    }
+
+    public static function form(array $A_param):bool{
+        if($A_param['submit']=="Modifier"){
+            $I_id = $A_param['id'];
+            unset($A_param['id']);
+            unset($A_param['submit']);
+            var_dump($A_param);
+            return self::updateById($A_param, $I_id);
+        }
+        return self::deleteByID($A_param['id']);
     }
 
 }
