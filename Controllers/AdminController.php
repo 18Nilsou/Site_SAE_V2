@@ -8,8 +8,11 @@ final class AdminController
             header("Location: /home");
             exit;
         }
+
+        $A_questions = array ("trainning" => Questions::selectByRoom("A1B2C3"), "play" => Questions::selectByRoom("D4E5F6"));
+
         View::show("admin/admin-nav");
-        View::show("admin/solo");
+        View::show("admin/solo", $A_questions);
     }
 
     public function multiplayerAction(): void
