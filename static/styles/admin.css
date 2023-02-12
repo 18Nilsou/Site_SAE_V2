@@ -12,6 +12,7 @@
     padding-top: 2%;
     text-align: center;
     color: white;
+    font-size: 200%;
 }
 
 #nav-admin button.active {
@@ -25,4 +26,23 @@
 
 .tab {
     background: radial-gradient(circle, rgb(58, 95, 224) 0%, rgb(0, 0, 0) 100%);
+}
+
+.multiplayer-containers {
+    background-color: white;
+    margin-right: 5%;
+    margin-left: 5%;
+    border-radius: 3em;
+}
+
+.multiplayer-containers h3 {
+    text-align: center;
+    font-size: 150%;
+}
+
+#create-room-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
