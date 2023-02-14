@@ -39,7 +39,6 @@ final class AdminController
             exit;
         }
         $A_postParams['id'] = Rooms::uniqueId();
-        $A_postParams['password'] = Rooms::passwordRoomGenerator();
         $A_postParams['started'] = 'false';
         $A_postParams['admin_id'] = Session::getSession()['id'];
         Rooms::create($A_postParams);
