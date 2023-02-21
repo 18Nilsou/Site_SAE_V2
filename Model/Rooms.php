@@ -5,7 +5,7 @@ final class Rooms extends Model{
         $P_db = Connection::initConnection();
         $S_sql = "SELECT * FROM ROOMS WHERE admin_id = :admin_id";
         $P_sth = $P_db->prepare($S_sql);
-        $P_sth->bindValue(':admin_id', $S_id, PDO::PARAM_INT);
+        $P_sth->bindValue(':admin_id', $S_id, PDO::PARAM_STR);
         $P_sth->execute();
         return $P_sth->fetchAll();
     }
