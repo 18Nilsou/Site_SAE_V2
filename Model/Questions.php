@@ -15,7 +15,7 @@ final class Questions extends Model{
         $S_array = "<table><tr><th>Numéro</th><th>Titre</th><th>Consigne</th><th>Indice</th><th>Solution</th><th></th><th></th></tr>";
         $A_Allquestions = self::selectByRoom($S_room);
         foreach($A_Allquestions as $key => $A_question){
-            $S_array .= "<form class='questionArray' action='questions' method='post'>
+            $S_array .= "<form class='questionArray' action='admin/modifyOrDeleteQuestion' method='post'>
                             <input type='hidden' name='id' value='".strval($A_question["id"])."'>
                             <input type='hidden' name='order_question' value='".$A_question["order_question"]."'>
                             <input type='hidden' name='room_id' value='".$S_room."'>

@@ -34,4 +34,15 @@ final class AdminController
         View::show("admin/admin-nav");
         View::show("admin/users");
     }
+
+    public function modifyOrDeleteQuestionAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        Questions::form($A_postParams);
+        header("location: /Admin");
+    }
+
+    public function addQuestionAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        Questions::add($A_postParams);
+        header("location: /Admin");
+    }
+    
 }

@@ -4,7 +4,7 @@
 <h2>Partie Entrainement</h2>
 <?php echo($A_view['trainning']);?>
 <h3>Ajouter une question</h3>
-<form class="questionForm" method="post" action="questions/add">
+<form class="questionForm" method="post" action="admin/addQuestion">
     <input type='hidden' name='room_id' value='A1B2C3'>
     <label>Titre de la question : </label>
     <input type="text"  placeholder="Titre" name="title" required="required"><br/>
@@ -24,7 +24,7 @@
 echo($A_view['play']);
 ?>
 <h3>Ajouter une question</h3>
-<form class="questionForm" method="post" action="questions/add">
+<form class="questionForm" method="post" action="admin/addQuestion">
     <input type='hidden' name='room_id' value='D4E5F6'>
     <label>Titre de la question : </label>
     <input type="text"  placeholder="Titre" name="title" required="required"><br/>
