@@ -1,0 +1,35 @@
+.AdminForm{
+    background-color: #252525;
+    color: #ffffff;
+    border-radius: 2em;
+    padding: 3% 4.5% 4.5%;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25em;
+    height: 10em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.AdminFormScore{
+    background-color: #252525;
+    color: #ffffff;
+    border-radius: 2em;
+    padding: 3% 4.5% 4.5%;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.divUsers{
+    display: flex;
+    flex-direction: row;
+}
