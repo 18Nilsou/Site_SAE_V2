@@ -44,5 +44,26 @@ final class AdminController
         Questions::add($A_postParams);
         header("location: /Admin");
     }
+
+    public function addAdminAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        Admins::create($A_postParams);
+        header("location: /Admin/users");
+    }
+
+    public function deleteAdminAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        Admins::deleteByID($A_postParams['id']);
+        header("location: /Admin/users");
+    }
+
+    public function deleteUserAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        Admins::deleteByID($A_postParams['id']);
+        Users::deleteByID($A_postParams['id']);
+        header("location: /Admin/users");
+    }
+
+    public function getScoreAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        Files::score(Rooms::getScore($A_postParams));
+        Files::download("score.txt","Files/score.txt");
+    }
     
 }

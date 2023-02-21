@@ -10,7 +10,8 @@
         <link rel="stylesheet" type="text/css" href="/static/styles/error.css">
         <link rel="stylesheet" type="text/css" href="/static/styles/admin.css">
 
-        <script type='text/javascript' src='/static/js/add-question.js'></script>
+        
+
 
     </head>
     <body>
