@@ -1,0 +1,30 @@
+.questionForm{
+    font-size: 120%;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #252525;
+    border-radius: 2em;
+    padding: 3% 4.5% 4.5%;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    justify-content: center;
+}
+
+.arrayQuestion table{
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    margin-bottom: 12px;
+}
+
+.arrayQuestion table, th{
+    border: 1px solid;
+}
+
+.titlesolo{
+    text-align: center;
+}
+

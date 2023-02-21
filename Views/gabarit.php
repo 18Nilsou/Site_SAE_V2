@@ -9,9 +9,8 @@
         <link rel="stylesheet" type="text/css" href="/static/styles/home.css">
         <link rel="stylesheet" type="text/css" href="/static/styles/error.css">
         <link rel="stylesheet" type="text/css" href="/static/styles/admin.css">
-
-        
-
+        <link rel="stylesheet" type="text/css" href="/static/styles/adminSolo.css">
+        <link rel="stylesheet" type="text/css" href="/static/styles/adminUsers.css">
 
     </head>
     <body>
