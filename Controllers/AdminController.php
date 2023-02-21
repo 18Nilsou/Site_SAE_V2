@@ -19,7 +19,7 @@ final class AdminController
             exit;
         }
         View::show("admin/admin-nav");
-        View::show("admin/multiplayer");
+        View::show("admin/multiplayer", Rooms::selectRoomsByAdmin(Session::getSession()['id']));
     }
 
     public function usersAction(): void

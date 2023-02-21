@@ -21,4 +21,11 @@ final class Rooms extends Model{
         } while(Rooms::checkIfExistsById($randomId));
         return $randomId;
     }
+
+    public static function getLiterralStatus(bool $status):string{
+        if ($status) {
+            return "Démarrée";
+        }
+        return "Inactive";
+    }
 }

@@ -26,10 +26,29 @@
 
 .tab {
     background: radial-gradient(circle, rgb(58, 95, 224) 0%, rgb(0, 0, 0) 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.rooms-already-exists {
+    color: white;
+    background-color: rgb(58, 95, 224);
+    margin-left: 5em;
+    margin-right: 5em;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.rooms-already-exists {
+    margin-bottom: 2em;
 }
 
 .multiplayer-containers {
-    background-color: white;
+    background-color: #ffffff;
     margin-right: 5%;
     margin-left: 5%;
     border-radius: 3em;

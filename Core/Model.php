@@ -86,6 +86,6 @@ abstract class Model{
         $S_stmnt = "SELECT * FROM ".get_called_class()." WHERE ID = ? ";
         $P_sth = $O_con->prepare($S_stmnt);
         $P_sth->execute(array($_id));
-        return ($P_sth -> fetchAll() > 0);
+        return (!empty($P_sth -> fetchAll()));
     }
 }
