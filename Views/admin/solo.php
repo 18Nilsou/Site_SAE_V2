@@ -1,10 +1,11 @@
 <section class="tab">
     <h2>Gestion des questions du jeu solo</h2>
 </section>
-<h2 class='titlesolo'>Partie Entrainement</h2>
-<div class= "arrayQuestion">
-    <?php echo($A_view['trainning']);?>
-</div>
+
+<div class="navSolo"><a href="#Entrainement">Partie Entrainement</a> <a href="#jeu">Partie Jeu</a></div>
+
+
+<h2 id="Entrainement" class='titlesolo'>Partie Entrainement</h2>
 
 
 <form class="questionForm" method="post" action="admin/addQuestion">
@@ -22,11 +23,12 @@
     <input type="number" name="order_question"><br/>
     <input type="submit" value="Valider">
 </form>
-<br/>
-<h2 class='titlesolo'>Partie Jeu</h2>
 <div class= "arrayQuestion">
-    <?php echo($A_view['play']);?>
+    <?php echo($A_view['trainning']);?>
 </div>
+<br/>
+<h2 id = "jeu" class='titlesolo'>Partie Jeu</h2>
+
 <form class="questionForm" method="post" action="admin/addQuestion">
     <h3>Ajouter une question</h3>
     <input type='hidden' name='room_id' value='D4E5F6'>
@@ -42,3 +44,6 @@
     <input type="number" name="order_question"><br/>
     <input type="submit" value="Valider">
 </form>
+<div class= "arrayQuestion">
+    <?php echo($A_view['play']);?>
+</div>

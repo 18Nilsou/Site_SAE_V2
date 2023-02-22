@@ -24,7 +24,7 @@ final class Questions extends Model{
                                 <th><input type='text' name='title' size='25' value='".$A_question["title"]."'></th>
                                 <th><textarea name='assignement' rows='3' >".$A_question["assignement"]." </textarea></th>
                                 <th><input type='text' name='suggestion' size='25' value='".$A_question["suggestion"]."'></th>
-                                <th><input type='text' name='suggestion' size='25' value='".$A_question["answer"]."'></th>
+                                <th><input type='text' name='answer' size='25' value='".$A_question["answer"]."'></th>
                                 <th><input type='submit' name='submit' value='Modifier'></th>
                                 <th><input type='submit' name='submit' value='Supprimer'></th>
                             </tr>
@@ -39,7 +39,6 @@ final class Questions extends Model{
             $I_id = $A_param['id'];
             unset($A_param['id']);
             unset($A_param['submit']);
-            var_dump($A_param);
             return self::updateById($A_param, $I_id);
         }
         return self::deleteByID($A_param['id']);
