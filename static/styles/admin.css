@@ -55,6 +55,27 @@
     border-radius: 0.5em;
 }
 
+#invite-users-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#invite-users-form textarea {
+    width: 50%;
+    resize : none;
+}
+
+.black-button {
+    background-color: black;
+    color: white;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    border: none;
+}
+
 .multiplayer-containers {
     background-color: #ffffff;
     margin-right: 5%;
