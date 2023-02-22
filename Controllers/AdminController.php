@@ -48,30 +48,53 @@ final class AdminController
         header('Location: /admin/multiplayer');
     }
 
+    public function deleteroombyidAction(Array $A_parametres = null, Array $A_postParams = null):void {
+        if (Rooms::selectById($A_parametres[0])['admin_id'] == Session::getSession()['id']) {
+            Rooms::deleteByID($A_parametres[0]);
+        }
+        header('Location: /admin/multiplayer');
+        exit;
+    }
+
+    public function changeroomstatusAction(Array $A_parametres = null, Array $A_postParams = null):void {
+        $A_room = Rooms::selectById($A_parametres[0]);
+        if ($A_room['admin_id'] == Session::getSession()['id']) {
+            if ($A_room['started']) {
+                $A_room['started'] = 'false';
+                Rooms::updateById($A_room, $A_parametres[0]);
+            } else {
+                $A_room['started'] = 'true';
+                Rooms::updateById($A_room, $A_parametres[0]);
+            }
+        }
+        header('Location: /admin/multiplayer');
+        exit;
+    }
+
     public function modifyOrDeleteQuestionAction(Array $A_parametres = null, Array $A_postParams = null) : void{
         Questions::form($A_postParams);
-        header("location: /Admin");
+        header("location: /admin");
     }
 
     public function addQuestionAction(Array $A_parametres = null, Array $A_postParams = null) : void{
         Questions::add($A_postParams);
-        header("location: /Admin");
+        header("location: /admin");
     }
 
     public function addAdminAction(Array $A_parametres = null, Array $A_postParams = null) : void{
         Admins::create($A_postParams);
-        header("location: /Admin/users");
+        header("location: /admin/users");
     }
 
     public function deleteAdminAction(Array $A_parametres = null, Array $A_postParams = null) : void{
         Admins::deleteByID($A_postParams['id']);
-        header("location: /Admin/users");
+        header("location: /admin/users");
     }
 
     public function deleteUserAction(Array $A_parametres = null, Array $A_postParams = null) : void{
         Admins::deleteByID($A_postParams['id']);
         Users::deleteByID($A_postParams['id']);
-        header("location: /Admin/users");
+        header("location: /admin/users");
     }
 
     public function getScoreAction(Array $A_parametres = null, Array $A_postParams = null) : void{

@@ -39,7 +39,6 @@ final class Questions extends Model{
             $I_id = $A_param['id'];
             unset($A_param['id']);
             unset($A_param['submit']);
-            var_dump($A_param);
             return self::updateById($A_param, $I_id);
         }
         return self::deleteByID($A_param['id']);

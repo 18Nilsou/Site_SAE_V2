@@ -1,4 +1,5 @@
 <?php
+echo '';
 echo '<section class="tab">
     <h2>Gestion des parties multijoueurs</h2>
     <section class="multiplayer-containers">
@@ -9,6 +10,10 @@ echo '<section class="tab">
             <p>Nom : ' . $A_room['name'] . '</p>
             <p>Code : '. $A_room['id'] .'</p>
             <p>Statut : '.Rooms::getLiterralStatus($A_room['started']).'</p>
+            <a class="update-room" href="/admin/deleteroombyid/'. $A_room['id'] .'">Supprimer ❌</a>
+            <a class="update-room" href="/admin/changeroomstatus/'. $A_room['id'] .'">Changer le statut ⚙️</a>
+            <a class="update-room" href="/admin/modifyroom/'. $A_room['id'] .'">Modifier 📝</a>
+            
         </section>';
     }
 echo '

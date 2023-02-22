@@ -12,22 +12,23 @@ final class Rooms extends Model{
 
 
     public static function uniqueId():string{
-        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $randomId = '';
+        $S_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $S_randomId = '';
         do {
             for ($i = 0; $i < 6; $i++) {
-                $randomId .= $characters[rand(0, strlen($characters) - 1)];
+                $S_randomId .= $S_characters[rand(0, strlen($S_characters) - 1)];
             }
-        } while(Rooms::checkIfExistsById($randomId));
-        return $randomId;
+        } while(Rooms::checkIfExistsById($S_randomId));
+        return $S_randomId;
     }
 
-    public static function getLiterralStatus(bool $status):string{
-        if ($status) {
-            return "Démarrée";
+    public static function getLiterralStatus(bool $B_status):string{
+        if ($B_status) {
+            return "Active";
         }
         return "Inactive";
     }
+
     public static function getScore(array $A_params):array{
 
         $P_db = Connection::initConnection();
