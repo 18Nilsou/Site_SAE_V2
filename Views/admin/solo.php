@@ -3,7 +3,7 @@
 </section>
 <h2 class='titlesolo'>Partie Entrainement</h2>
 <div class= "arrayQuestion">
-    <?php echo($A_view['trainning']);?>
+    <?php echo($A_view['training']);?>
 </div>
 
 

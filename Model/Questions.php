@@ -11,11 +11,11 @@ final class Questions extends Model{
         return $O_sth-> fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function getQuestionArray(string $S_room):string{
+    public static function getQuestionArray(string $S_room, string $S_action):string{
         $S_array = "<table><tr><th>Numéro</th><th>Titre</th><th>Consigne</th><th>Indice</th><th>Solution</th><th>Modifier</th><th>Supprimer</th></tr>";
         $A_Allquestions = self::selectByRoom($S_room);
         foreach($A_Allquestions as $key => $A_question){
-            $S_array .= "<form action='admin/modifyOrDeleteQuestion' method='post'>
+            $S_array .= "<form action='".$S_action."' method='post'>
                             <input type='hidden' name='id' value='".strval($A_question["id"])."'>
                             <input type='hidden' name='order_question' value='".$A_question["order_question"]."'>
                             <input type='hidden' name='room_id' value='".$S_room."'>
@@ -44,7 +44,7 @@ final class Questions extends Model{
         return self::deleteByID($A_param['id']);
     }
 
-    public static function getNumberOfQuestionByRoom(string $S_room):int{
+    public static function getNumberOfQuestionByRoom(string $S_room){
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT MAX(order_question) FROM Questions WHERE room_id = :room_id";
         $O_sth = $O_con->prepare($S_stmnt);

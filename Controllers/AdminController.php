@@ -9,7 +9,7 @@ final class AdminController
             exit;
         }
 
-        $A_questions = array ("trainning" => Questions::getQuestionArray("A1B2C3"), "play" => Questions::getQuestionArray("D4E5F6"));
+        $A_questions = array ("training" => Questions::getQuestionArray("A1B2C3", "/admin/modifyOrDeleteQuestion"), "play" => Questions::getQuestionArray("D4E5F6", "/admin/modifyOrDeleteQuestion"));
 
         View::show("admin/admin-nav");
         View::show("admin/solo", $A_questions);
@@ -77,7 +77,7 @@ final class AdminController
             exit;
         }
         View::show("admin/admin-nav");
-        View::show("admin/modifyroom", $A_room);
+        View::show("admin/modifyroom", array('room' => $A_room, 'questions' => Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom")));
     }
 
     public function inviteusersAction($A_parametres = null, Array $A_postParams = null) {
@@ -95,32 +95,77 @@ final class AdminController
     }
 
     public function modifyOrDeleteQuestionAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        if (!Session::isAdmin()) {
+            header("location: /signin");
+        }
         Questions::form($A_postParams);
         header("location: /admin");
     }
 
+    public function modifyOrDeleteQuestionRoomAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        $A_room = Rooms::selectById($A_postParams['room_id']);
+        if ($A_room['admin_id'] != Session::getSession()['id']) {
+            header('Location: /admin/multiplayer');
+            exit;
+        }
+        Questions::form($A_postParams);
+        header('Location: /admin/modifyroom/'. $A_room['id']);
+        exit;
+    }
+
     public function addQuestionAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        if (!Session::isAdmin()) {
+            header("location: /signin");
+            exit;
+        }
         Questions::add($A_postParams);
         header("location: /admin");
     }
 
+    public function addRoomQuestionAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        $A_room = Rooms::selectById($A_postParams['id']);
+        if ($A_room['admin_id'] != Session::getSession()['id']) {
+            header('Location: /admin/multiplayer');
+            exit;
+        }
+        Questions::add($A_postParams);
+        header('Location: /admin/modifyroom/'. $A_room['id']);
+        exit;
+    }
+
     public function addAdminAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        if (!Session::isAdmin()) {
+            header("location: /signin");
+            exit;
+        }
         Admins::create($A_postParams);
         header("location: /admin/users");
     }
 
     public function deleteAdminAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        if (!Session::isAdmin()) {
+            header("location: /signin");
+            exit;
+        }
         Admins::deleteByID($A_postParams['id']);
         header("location: /admin/users");
     }
 
     public function deleteUserAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        if (!Session::isAdmin()) {
+            header("location: /signin");
+            exit;
+        }
         Admins::deleteByID($A_postParams['id']);
         Users::deleteByID($A_postParams['id']);
         header("location: /admin/users");
     }
 
     public function getScoreAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        if (!Session::isAdmin()) {
+            header("location: /signin");
+            exit;
+        }
         Files::score(Rooms::getScore($A_postParams));
         Files::download("score.txt","Files/score.txt");
     }
