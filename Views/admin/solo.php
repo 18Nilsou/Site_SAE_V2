@@ -21,7 +21,7 @@
     <input type="submit" value="Valider">
 </form>
 <div class= "arrayQuestion">
-    <?php echo($A_view['trainning']);?>
+    <?php echo($A_view['training']);?>
 </div>
 <br/>
 <h2 id = "jeu" class='titlesolo'>Partie Jeu</h2>
