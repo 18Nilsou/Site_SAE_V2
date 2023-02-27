@@ -5,8 +5,6 @@
 <div class= "arrayQuestion">
     <?php echo($A_view['training']);?>
 </div>
-
-
 <form class="questionForm" method="post" action="admin/addQuestion">
     <h3>Ajouter une question</h3>
     <input type='hidden' name='room_id' value='A1B2C3'>
@@ -22,11 +20,12 @@
     <input type="number" name="order_question"><br/>
     <input type="submit" value="Valider">
 </form>
-<br/>
-<h2 class='titlesolo'>Partie Jeu</h2>
 <div class= "arrayQuestion">
-    <?php echo($A_view['play']);?>
+    <?php echo($A_view['trainning']);?>
 </div>
+<br/>
+<h2 id = "jeu" class='titlesolo'>Partie Jeu</h2>
+
 <form class="questionForm" method="post" action="admin/addQuestion">
     <h3>Ajouter une question</h3>
     <input type='hidden' name='room_id' value='D4E5F6'>
@@ -42,3 +41,6 @@
     <input type="number" name="order_question"><br/>
     <input type="submit" value="Valider">
 </form>
+<div class= "arrayQuestion">
+    <?php echo($A_view['play']);?>
+</div>
