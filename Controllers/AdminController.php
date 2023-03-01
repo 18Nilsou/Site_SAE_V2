@@ -9,7 +9,7 @@ final class AdminController
             exit;
         }
 
-        $A_questions = array ("trainning" => Questions::getQuestionArray("A1B2C3"), "play" => Questions::getQuestionArray("D4E5F6"));
+        $A_questions = array ("training" => Questions::getQuestionArray("practice"), "play" => Questions::getQuestionArray("game"));
 
         View::show("admin/admin-nav");
         View::show("admin/solo", $A_questions);
