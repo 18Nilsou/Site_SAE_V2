@@ -12,6 +12,7 @@
     padding-top: 2%;
     text-align: center;
     color: white;
+    font-size: 200%;
 }
 
 #nav-admin button.active {
@@ -25,4 +26,71 @@
 
 .tab {
     background: radial-gradient(circle, rgb(58, 95, 224) 0%, rgb(0, 0, 0) 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.rooms-already-exists {
+    color: white;
+    background-color: rgb(58, 95, 224);
+    margin-left: 5em;
+    margin-right: 5em;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.rooms-already-exists {
+    margin-bottom: 2em;
+}
+
+.update-room {
+    padding: 0.5em;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border-radius: 0.5em;
+}
+
+#invite-users-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#invite-users-form textarea {
+    width: 50%;
+    resize : none;
+}
+
+.black-button {
+    background-color: black;
+    color: white;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    border: none;
+}
+
+.multiplayer-containers {
+    background-color: #ffffff;
+    margin-right: 5%;
+    margin-left: 5%;
+    border-radius: 3em;
+}
+
+.multiplayer-containers h3 {
+    text-align: center;
+    font-size: 150%;
+}
+
+#create-room-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }

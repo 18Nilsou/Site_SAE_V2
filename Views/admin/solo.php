@@ -1,11 +1,7 @@
 <section class="tab">
     <h2>Gestion des questions du jeu solo</h2>
 
-
 <div class="navSolo"><a href="#Entrainement">Partie Entrainement</a> <a href="#jeu">Partie Jeu</a></div>
-
-
-
 
 <div class="row">
     <form class="questionForm" method="post" action="admin/addQuestion">

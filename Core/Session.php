@@ -43,6 +43,13 @@ final class Session
         return null;
     }
 
+    public static function isAdmin(): bool {
+        if (Session::getSession()['status'] == 'admin') {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Destroy the session
      *
