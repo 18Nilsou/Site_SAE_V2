@@ -123,7 +123,7 @@ final class AdminController
     }
 
     public function addRoomQuestionAction(Array $A_parametres = null, Array $A_postParams = null) : void{
-        $A_room = Rooms::selectById($A_postParams['id']);
+        $A_room = Rooms::selectById($A_postParams['room_id']);
         if ($A_room['admin_id'] != Session::getSession()['id']) {
             header('Location: /admin/multiplayer');
             exit;
