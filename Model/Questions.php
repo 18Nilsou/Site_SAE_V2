@@ -21,10 +21,10 @@ final class Questions extends Model{
                             <input type='hidden' name='room_id' value='".$S_room."'>
                             <tr>
                                 <th>".$A_question["order_question"]."</th>
-                                <th><input type='text' name='title' size='25' value='".$A_question["title"]."'></th>
-                                <th><textarea name='assignement' rows='3' >".$A_question["assignement"]." </textarea></th>
-                                <th><input type='text' name='suggestion' size='25' value='".$A_question["suggestion"]."'></th>
-                                <th><input type='text' name='answer' size='25' value='".$A_question["answer"]."'></th>
+                                <th><input type='text' name='title' maxlength='40' size='25' value='".$A_question["title"]."'></th>
+                                <th><textarea name='assignement' maxlength='255' rows='3' >".$A_question["assignement"]." </textarea></th>
+                                <th><input type='text' name='suggestion' maxlength='255' size='25' value='".$A_question["suggestion"]."'></th>
+                                <th><input type='text' name='answer'  maxlength='255' size='25' value='".$A_question["answer"]."'></th>
                                 <th><input type='submit' name='submit' value='Modifier'></th>
                                 <th><input type='submit' name='submit' value='Supprimer'></th>
                             </tr>
