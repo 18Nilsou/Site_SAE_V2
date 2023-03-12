@@ -7,6 +7,9 @@ final class UserController{
             View::show("User/score", Users::selectMyScore(Session::getSession()['id']));
             View::show("User/feed-back", Users::selectMyFeedBack(Session::getSession()['id']));
         }
-        
+    }
+
+    public function addfeedbackAction(Array $A_parametres = null, Array $A_postParams = null){
+        View::show("feedback/add",$A_postParams);
     }
 }
