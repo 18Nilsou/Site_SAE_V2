@@ -1,7 +1,7 @@
 <script type='text/javascript' src='/static/js/add-user.js'></script>
 <section class="tab">
     <h2>Gestion des Utilisateurs</h2>
-</section>
+
 <h2>Les Joueurs</h2>
 <div class="divUsers">
     <form class="AdminFormScore" method="post" action="/admin/getScore">
@@ -47,3 +47,4 @@
         <input type="submit" value="Valider">
     </form>  
 </div>
+</section>

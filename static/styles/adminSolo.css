@@ -19,6 +19,8 @@
     margin-right: auto;
     width: 95%;
     margin-bottom: 50px;
+    background-color: #ffffff;
+
 }
 
 .arrayQuestion table, th{
@@ -55,7 +57,11 @@
     position: fixed;
 }
 
-
+.row{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+}
 @media screen and (max-width: 650px) {
     .questionForm{
         width: 70%;
