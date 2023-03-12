@@ -12,22 +12,22 @@ echo '<section class="tab">
             </section>
         </form>
     </section>
-    <section class="arrayQuestion multiplayer-containers">';
-        echo($A_view['questions']);
+    <section class="arrayQuestion">';
         echo '
-        <form class="questionForm" method="post" action="/admin/addRoomQuestion">
-            <h3>Ajouter une question</h3>
-            <input type="hidden" name="room_id" value='. $A_view['room']['id'] .'>
-            <label>Titre de la question : </label>
-            <input type="text"  placeholder="Titre" name="title" required="required"><br/>
-            <label>Consigne :</label>
-            <textarea name="assignement" rows="5" cols="30"  placeholder="Consigne" aria-required="true"></textarea><br/>
-            <label>Réponse : </label>
-            <input type="text"  placeholder="Réponse" name="answer" required="required"><br/>
-            <label>Indice : </label>
-            <textarea name="suggestion" rows="5" cols="30"  placeholder="Indice" aria-required="true"></textarea><br/>
-            <input type="submit" value="Valider">
-        </form>';
+            <form class="questionForm" method="post" action="/admin/addRoomQuestion">
+                <h3>Ajouter une question</h3>
+                <input type="hidden" name="room_id" value='. $A_view['room']['id'] .'>
+                <label>Titre de la question : </label>
+                <input type="text"  placeholder="Titre" name="title" required="required"><br/>
+                <label>Consigne :</label>
+                <textarea name="assignement" rows="5" cols="30"  placeholder="Consigne" aria-required="true"></textarea><br/>
+                <label>Réponse : </label>
+                <input type="text"  placeholder="Réponse" name="answer" required="required"><br/>
+                <label>Indice : </label>
+                <textarea name="suggestion" rows="5" cols="30"  placeholder="Indice" aria-required="true"></textarea><br/>
+                <input type="submit" value="Valider">
+            </form>';
+        echo($A_view['questions']);
 echo '
     </section>
 </section>';
