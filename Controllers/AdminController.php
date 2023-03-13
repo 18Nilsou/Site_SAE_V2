@@ -77,18 +77,43 @@ final class AdminController
             exit;
         }
         View::show("admin/admin-nav");
-        View::show("admin/modifyroom", array('room' => $A_room, 'questions' => Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom")));
+        $A_guests = Whitelist::selectByRoom($A_parametres[0]);
+        $A_guestUsers = array();
+        foreach ($A_guests as $A_guest) {
+            $A_guestUsers[] = Users::selectById($A_guest['user_id']);
+        }
+        View::show("admin/modifyroom", array('room' => $A_room,
+            'questions' => Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom"),
+            'guestUsers' => $A_guestUsers));
+    }
+
+    public function blacklistuserAction(Array $A_parametres = null, Array $A_postParams = null) {
+        $A_room = Rooms::selectById($A_postParams['roomId']);
+        if ($A_room['admin_id'] != Session::getSession()['id']) {
+            header('Location: /admin/multiplayer');
+            exit;
+        }
+        Whitelist::deleteByRoomIdAndUserId($A_postParams['roomId'], $A_postParams['user_id']);
+        header('Location: /admin/modifyroom/'.$A_postParams['roomId']);
+        exit;
     }
 
     public function inviteusersAction($A_parametres = null, Array $A_postParams = null) {
         $A_room = Rooms::selectById($A_postParams['roomId']);
+        if ($A_room['admin_id'] != Session::getSession()['id']) {
+            header('Location: /admin/multiplayer');
+            exit;
+        }
         $A_users = explode(',',$A_postParams['userList']);
         $A_inviteMessageContent = array('subject' => 'Invitation dans un salon de jeu Find the breach',
             'body' => 'Vous avez été invité à rejoindre une salle de Jeu sur FindTheBreach ! 
             Le nom de la salle est : '. $A_room['name'] . ' et son code pour la rejoindre est : ' .
             $A_room['id'] . ' À très vite !',);
         foreach ($A_users as $S_UserMail) {
-            Mailer::sendMail($S_UserMail, $A_inviteMessageContent);
+            if(Users::checkIfExistsByEmail($S_UserMail)) {
+                Whitelist::create(array('user_id' => Users::selectByEmail($S_UserMail)['id'], 'room_id' => $A_postParams['roomId']));
+                Mailer::sendMail($S_UserMail, $A_inviteMessageContent);
+            }
         }
         header('Location: /admin/modifyroom/'. $A_room['id']);
         exit;
