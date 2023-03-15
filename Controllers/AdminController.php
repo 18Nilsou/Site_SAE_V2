@@ -181,5 +181,6 @@ final class AdminController
         $A_questions = Files::readquestion($destination, $A_postParams['room_id']);
         Questions::addList($A_questions);
         unlink($destination);
+        header("location: /admin");
     }
 }

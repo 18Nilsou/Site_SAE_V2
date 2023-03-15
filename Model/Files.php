@@ -25,7 +25,6 @@ final class Files{
     public static function readquestion($S_name, $S_room_id){
         $O_file = fopen($S_name, 'r');
         fgetcsv($O_file,1024);
-        var_dump($S_room_id);
         while (!feof($O_file) ) {
             $A_question = fgetcsv($O_file,1024);
             if (strlen($A_question[1]) < 40 && strlen($A_question[2]) < 255 &&
