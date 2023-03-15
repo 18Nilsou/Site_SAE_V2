@@ -23,4 +23,26 @@ final class Files{
         exit;
     }
 
+    public static function readquestion($S_name, $S_room_id){
+        $O_file = fopen($S_name, 'r');
+        fgetcsv($O_file,1024);
+        while (!feof($O_file) ) {
+            $A_question = fgetcsv($O_file,1024);
+            if (strlen($A_question[1]) < 40 && strlen($A_question[2]) < 255 &&
+                strlen($A_question[3]) < 255 && strlen($A_question[4]) < 255 && strlen($S_room_id) < 10){
+
+                $A_questions[] = [
+                "order_question" => $A_question[0],
+                "title" =>$A_question[1],
+                "assignement" =>$A_question[2],
+                "answer" =>$A_question[3],
+                "suggestion" => $A_question[4],
+                "room_id" =>$S_room_id
+                ];
+
+            }
+        }
+        fclose($O_file);
+        return $A_questions;
+    }
 }

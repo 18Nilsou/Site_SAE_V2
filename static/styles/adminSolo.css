@@ -3,7 +3,7 @@
     color: #ffffff;
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
     background-color: #252525;
@@ -14,13 +14,26 @@
     margin-bottom: 20px;
 }
 
+.addquestions{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.arrayQuestion{
+    background-color: aliceblue;
+    margin: 5%;
+    padding-top: 2%;
+    border-radius: 2em;
+}
+
 .arrayQuestion table{
     margin-left: auto;
     margin-right: auto;
     width: 95%;
     margin-bottom: 50px;
     background-color: #ffffff;
-
 }
 
 .arrayQuestion table, th{

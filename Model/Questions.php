@@ -72,7 +72,6 @@ final class Questions extends Model{
         }
 
         $A_allQuestions = self::selectByRoom($A_param['room_id']);
-        var_dump($A_allQuestions['0']);
         foreach($A_allQuestions as $key => $A_question){
             if($A_question['order_question'] = $A_param['order_question']){
                 $A_question['order_question'] = intval($A_question['order_question']) + 1;
@@ -82,4 +81,19 @@ final class Questions extends Model{
         return Questions::create($A_param);
     }
 
+    public static function addList($A_questions){
+        foreach($A_questions as $A_question){
+            self::delete($A_question["order_question"], $A_question["room_id"]);
+            Questions::create($A_question);
+        }
+    }
+
+    public static function delete($I_order, $S_room){
+        $O_con = Connection::initConnection();
+        $S_stmnt = "Delete from rooms where room_id = :room_id and order_question = :order";
+        $O_sth = $O_con->prepare($S_stmnt);
+        $O_sth -> bindValue(":room_id", $S_room, PDO::PARAM_STR);
+        $O_sth -> bindValue(":order", $I_order, PDO::PARAM_INT);
+        $O_sth->execute();
+    }
 }
