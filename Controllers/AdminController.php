@@ -180,5 +180,6 @@ final class AdminController
         move_uploaded_file($origine,$destination);
         $A_questions = Files::readquestion($destination, $A_postParams['room_id']);
         Questions::addList($A_questions);
+        unlink($destination);
     }
 }
