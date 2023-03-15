@@ -6,7 +6,7 @@
 <div class="divUsers">
     <form class="AdminFormScore" method="post" action="/admin/getScore">
         <h3>Récuperer les scores de la partie solo</h3>
-        <input type='hidden' name='room_id' value='D4E5F6'>
+        <input type='hidden' name='room_id' value='game'>
         <div id='container'>
             <label>Pseudo : </label>
             <input type="text"  placeholder="Pseudo" name="id[]" required="required"><br><br>

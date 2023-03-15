@@ -32,9 +32,10 @@ final class Rooms extends Model{
     public static function getScore(array $A_params):array{
 
         $P_db = Connection::initConnection();
-        $S_sql = "SELECT user_id, score
-                FROM scores s, rooms r
+        $S_sql = "SELECT user_id, score, u.name, lastname, r.name room
+                FROM scores s, rooms r, users u
                 WHERE r.id = :room_id
+                and user_id = u.id
                 AND user_id = ";
 
         foreach($A_params['id'] as $S_id){
@@ -42,7 +43,7 @@ final class Rooms extends Model{
             $A_paramBindValue[":$S_id"] = $S_id;
         }
         $S_sql = substr($S_sql, 0, -13);
-        $S_sql .= " order by score ";
+        $S_sql .= " order by score desc ";
         $P_sth = $P_db->prepare($S_sql);
         $P_sth->bindValue(':room_id', $A_params['room_id'], PDO::PARAM_STR);
 
@@ -52,6 +53,6 @@ final class Rooms extends Model{
         }
 
         $P_sth->execute();
-        return $P_sth->fetchAll();
+        return $P_sth->fetchAll(PDO::FETCH_ASSOC);
     }
 }

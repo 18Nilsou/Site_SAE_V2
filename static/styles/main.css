@@ -90,6 +90,23 @@ nav a {
     gap: 2em;
 }
 
+footer{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction:row;
+    justify-content: space-around;
+    background-color: #1B1C1E;
+    color: aliceblue;
+    font-size: 200%;
+    height: 150px;
+
+}
+
+footer a{
+    text-decoration: none;
+}
+
 @media (max-width:900px) {
     #burger-btn {
         display: block;
