@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="/static/styles/admin.css">
         <link rel="stylesheet" type="text/css" href="/static/styles/adminSolo.css">
         <link rel="stylesheet" type="text/css" href="/static/styles/adminUsers.css">
-
+        <link rel="stylesheet" type="text/css" href="/static/styles/user.css">
     </head>
     <body>
         <?php View::show('standard/header'); ?>

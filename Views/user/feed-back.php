@@ -1,5 +1,6 @@
-<div class="feedbacks">
 <h1>Mes Feed-Back</h1>
+<div class="feedbacks">
+
 <?php
 
 foreach ($A_view as $A_feedback){
@@ -21,4 +22,5 @@ foreach ($A_view as $A_feedback){
         </div>';
 }
 ?>
+</div>
 </div>
