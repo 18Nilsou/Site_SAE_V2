@@ -72,7 +72,6 @@ final class Questions extends Model{
         }
 
         $A_allQuestions = self::selectByRoom($A_param['room_id']);
-        var_dump($A_allQuestions['0']);
         foreach($A_allQuestions as $key => $A_question){
             if($A_question['order_question'] = $A_param['order_question']){
                 $A_question['order_question'] = intval($A_question['order_question']) + 1;
@@ -81,5 +80,12 @@ final class Questions extends Model{
         }
         return Questions::create($A_param);
     }
+
+    public static function addList($A_questions){
+        foreach($A_questions as $A_question){
+            Questions::create($A_question);
+        }
+    }
+        
 
 }

@@ -20,6 +20,17 @@
         <input type="submit" value="Valider">
     </form>
 
+
+    <form class="questionForm" method="post"  enctype='multipart/form-data' action="admin/getquestionfromfile">
+        <h3>Ajouter des questions avec un fichier dans la partie Entrainement</h3>
+        <a href="/admin/getfilequestions">Exemple de format du fichier.csv</a>
+        <input type='hidden' name='room_id' value='game'>
+        <label>Titre de la question : </label>
+        <input type="file" name="file" id="file" accept=".csv" required="required"><br/>
+        <input type="submit" value="Valider">
+    </form>
+
+
     <form class="questionForm" method="post" action="admin/addQuestion">
         <h3>Ajouter une question dans la partie Jeu</h3>
         <input type='hidden' name='room_id' value='game'>
