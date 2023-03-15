@@ -175,12 +175,12 @@ final class AdminController
     }
 
     public function getquestionfromfileAction(Array $A_parametres = null, Array $A_postParams = null) : void{
-        $origine = $_FILES['file']['tmp_name'];
-        $destination = 'Files/ '.$_FILES['file']['name'];
-        move_uploaded_file($origine,$destination);
-        $A_questions = Files::readquestion($destination, $A_postParams['room_id']);
+        $S_origin = $_FILES['file']['tmp_name'];
+        $S_path = 'Files/ '.$_FILES['file']['name'];
+        move_uploaded_file($S_origin,$S_path);
+        $A_questions = Files::readquestion($S_path, $A_postParams['room_id']);
         Questions::addList($A_questions);
-        unlink($destination);
+        unlink($S_path);
         header("location: /admin");
     }
 }
