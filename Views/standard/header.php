@@ -8,6 +8,7 @@
             <a href="/home">Accueil</a>
             <?php
                 if (Session::check()) {
+                    echo'<a href="/user">Mon Compte</a>';
                     if(Session::getSession()['status'] == 'admin') {
                         echo '
                         <a href="/admin">Administration</a>';
