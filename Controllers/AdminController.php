@@ -55,7 +55,8 @@ final class AdminController
         exit;
     }
 
-    public function modifyroomAction(Array $A_parametres = null, Array $A_postParams = null) {
+    public function modifyroomAction(Array $A_parametres = null, Array $A_postParams = null): void
+    {
         $A_room = Rooms::selectById($A_parametres[0]);
         if ($A_room['admin_id'] != Session::getSession()['id']) {
             header('Location: /admin/multiplayer');
@@ -70,6 +71,20 @@ final class AdminController
         View::show("admin/modifyroom", array('room' => $A_room,
             'questions' => Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom"),
             'guestUsers' => $A_guestUsers));
+    }
+
+    public function modifyroomdatesAction(Array $A_parametres = null, Array $A_postParams = null): void
+    {
+        $A_room = Rooms::selectById($A_postParams['roomId']);
+        if ($A_room['admin_id'] != Session::getSession()['id']) {
+            header('Location: /admin/multiplayer');
+            exit;
+        }
+        $A_room['start_date'] = $A_postParams['start_date'];
+        $A_room['end_date'] = $A_postParams['end_date'];
+        Rooms::updateById($A_room, $A_postParams['roomId']);
+        header('Location: /admin/modifyroom/'.$A_postParams['roomId']);
+        exit;
     }
 
     public function blacklistuserAction(Array $A_parametres = null, Array $A_postParams = null) {

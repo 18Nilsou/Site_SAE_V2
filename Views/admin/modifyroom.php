@@ -25,6 +25,19 @@ echo '<section class="tab">
             </section>
         </form>
     </section>
+    <section class="multiplayer-containers">
+         <form action="/admin/modifyroomdates" method="post">
+            <h3>Modification date d\'ouverture et de fermeture de la salle</h3>
+            <section id="invite-users-form">
+                <label>Date d\'ouverture : </label>
+                <input type="hidden" name="roomId" value='. $A_view['room']['id'] .'>
+                <input type="datetime-local" name="start_date" id="start_date">
+                <label>Date de fermeture : </label>
+                <input type="datetime-local" name="end_date" id="end_date">
+                <input class="black-button" type="submit" id="room_date">
+            </section>
+        </form>
+    </section>
     <section class="arrayQuestion">';
         echo '
             <form class="questionForm" method="post" action="/admin/addRoomQuestion">
@@ -43,4 +56,5 @@ echo '<section class="tab">
         echo($A_view['questions']);
 echo '
     </section>
-</section>';
+</section>
+<script type="text/javascript" src="/static/js/check-room-date-validity.js"></script>';

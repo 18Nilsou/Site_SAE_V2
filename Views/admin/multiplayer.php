@@ -28,7 +28,7 @@ echo '
                 <input type="text" name="name" required>
                 <input type="datetime-local" name="start_date" id="start_date">
                 <input type="datetime-local" name="end_date" id="end_date">
-                <input type="submit" class="black-button" id="add_room" value="Créer">
+                <input type="submit" class="black-button" id="room_date" value="Créer">
             </section>
         </form>
     </section>
