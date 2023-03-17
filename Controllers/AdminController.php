@@ -42,7 +42,6 @@ final class AdminController
             exit;
         }
         $A_postParams['id'] = Rooms::uniqueId();
-        $A_postParams['started'] = 'false';
         $A_postParams['admin_id'] = Session::getSession()['id'];
         Rooms::create($A_postParams);
         header('Location: /admin/multiplayer');
@@ -51,20 +50,6 @@ final class AdminController
     public function deleteroombyidAction(Array $A_parametres = null, Array $A_postParams = null):void {
         if (Rooms::selectById($A_parametres[0])['admin_id'] == Session::getSession()['id']) {
             Rooms::deleteByID($A_parametres[0]);
-        }
-        header('Location: /admin/multiplayer');
-        exit;
-    }
-
-    public function changeroomstatusAction(Array $A_parametres = null, Array $A_postParams = null):void {
-        $A_room = Rooms::selectById($A_parametres[0]);
-        if ($A_room['admin_id'] == Session::getSession()['id']) {
-            if ($A_room['started']) {
-                $A_room['started'] = 'false';
-            } else {
-                $A_room['started'] = 'true';
-            }
-            Rooms::updateById($A_room, $A_parametres[0]);
         }
         header('Location: /admin/multiplayer');
         exit;

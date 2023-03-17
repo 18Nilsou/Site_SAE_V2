@@ -13,7 +13,7 @@
     <label for="passwordConfirm">Confirmation de passe :</label>
     <input class="id-form-input" id="password_confirm" type="password" placeholder="Confirmation du mot de passe" title="Confirmation du mot de passe" required >
     <input class="submit" type="submit" value="Valider">
-    <p class="redirections-sign"><a href="/recievepassword">Renvoyer un token</a></p>
+    <p class="redirections-sign"><a href="/retrievepassword">Renvoyer un token</a></p>
 </form>
 <script type='text/javascript' src='/static/js/password-check.js'></script>
 <script type='text/javascript' src='/static/js/password-visibility.js'></script>

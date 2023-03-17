@@ -22,11 +22,15 @@ final class Rooms extends Model{
         return $S_randomId;
     }
 
-    public static function getLiterralStatus(bool $B_status):string{
-        if ($B_status) {
-            return "Active";
+    public static function getStatus($start_date=null, $end_date=null):string{
+        date_default_timezone_set('Europe/Paris');
+        if (!is_null($start_date) && !is_null($end_date)) {
+            if ($start_date < date("Y-m-d H:i:s") && date("Y-m-d H:i:s") < $end_date) {
+                return "Active";
+            }
+            return "Inactive";
         }
-        return "Inactive";
+        return "Indeterminable";
     }
 
     public static function getScore(array $A_params):array{

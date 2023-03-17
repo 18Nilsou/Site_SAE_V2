@@ -1,11 +1,11 @@
 <?php
-final class Recievepassword extends Model{
+final class Retrievepassword extends Model{
 
     public static function sendMail(string $S_mail, int $I_token){
-        $A_parms['id'] = $S_mail;
-        $A_parms['token'] = $I_token;
-        $A_parms['date'] = date("Y-m-d H:i:s");
-        if(self::create( $A_parms)){
+        $A_params['id'] = $S_mail;
+        $A_params['token'] = $I_token;
+        $A_params['creation_date'] = date("Y-m-d H:i:s");
+        if(self::create($A_params)){
             $A_mailContent['subject'] = "Récuperation de mot de passe";
             $A_mailContent['body'] = "Voici votre token valable pendant 10min : ".$I_token;
             Mailer::sendMail($S_mail, $A_mailContent);
