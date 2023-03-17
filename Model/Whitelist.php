@@ -1,7 +1,6 @@
 <?php
 
-final class Whitelist extends Model
-{
+final class Whitelist extends Model {
     public static function selectByRoom(string $S_room):array{
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT * FROM Whitelist WHERE room_id = :room_id";

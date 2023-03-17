@@ -89,6 +89,20 @@
     font-size: 150%;
 }
 
+#unsuscribe-user-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#dropdown-user {
+    background-color: rgb(58, 95, 224);
+    color: white;
+    border-radius: 0.5em;
+    border: none;
+}
+
 #create-room-form {
     display: flex;
     align-items: center;

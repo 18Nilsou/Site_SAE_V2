@@ -11,16 +11,18 @@ echo '<section class="tab">
                 <input class="black-button" type="submit">
             </section>
         </form>
-        <form action="/admin/blacklistuser" method="post">
+        <form id="unsuscribe-user-form" action="/admin/blacklistuser" method="post">
             <input type="hidden" name="roomId" value="'.$A_view['room']['id'].'">
-            <select name="user_id">
-                <option>Un utilsateur à désinscrire ?</option>';
-                foreach ($A_view['guestUsers'] as $user) {
-                    echo '<option value="'.$user['id'].'">'.$user['name']." ".$user['lastname'].'</option>';
-                }
-            echo '
-            </select>
-            <input type="submit" value="Désinscrire">
+            <section>
+                <select name="user_id" id="dropdown-user">
+                    <option>Un utilsateur à désinscrire ?</option>';
+                    foreach ($A_view['guestUsers'] as $user) {
+                        echo '<option value="'.$user['id'].'">'.$user['name']." ".$user['lastname'].'</option>';
+                    }
+                    echo '
+                </select>
+                <input type="submit" class="black-button" value="Désinscrire">
+            </section>
         </form>
     </section>
     <section class="arrayQuestion">';

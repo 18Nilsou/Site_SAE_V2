@@ -25,10 +25,8 @@ abstract class Model{
         return $B_state;
     }
 
-    
     public static function create(Array $A_postParams) : bool{
         $O_con = Connection::initConnection();
-
         $S_keys = " ";
         $S_vals = " ";
         foreach (array_keys($A_postParams) as &$S_key){
