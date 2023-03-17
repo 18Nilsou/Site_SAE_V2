@@ -1,0 +1,60 @@
+.user{
+    margin: 0;
+    background: radial-gradient(circle, rgb(58, 95, 224) 0%, rgb(0, 0, 0) 100%);
+}
+
+.user h1{
+    text-align: center;
+    color: aliceblue;
+}
+
+.compte{
+    background-color: aliceblue;
+    border-radius: 2em;
+    padding: 10px;
+    margin: 5%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.compte h1{
+    color: black;
+    text-align: left;
+}
+.scores{
+    background-color: aliceblue;
+    border-radius: 2em;
+    margin: 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.scores div{
+    margin: 1%;
+    border-radius: 2em;
+    background-color: #3A5FE0;
+    height: 150px;
+    width: 150px;
+    text-align: center;
+}
+
+.feedbacks{
+    background-color: aliceblue;
+    border-radius: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.feedbacks div{
+    font-size:150%;
+    margin: 1%;
+    border-radius: 2em;
+    background-color: #3A5FE0;
+    height: 250px;
+    width: 250px;
+    text-align: center;
+}

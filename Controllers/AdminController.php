@@ -194,4 +194,18 @@ final class AdminController
         Files::score(Rooms::getScore($A_postParams));
         Files::download("score.txt","Files/score.txt");
     }
+
+    public function getfilequestionsAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        Files::download("questions.csv","Files/questions.csv");
+    }
+
+    public function getquestionfromfileAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        $S_origin = $_FILES['file']['tmp_name'];
+        $S_path = 'Files/ '.$_FILES['file']['name'];
+        move_uploaded_file($S_origin,$S_path);
+        $A_questions = Files::readquestion($S_path, $A_postParams['room_id']);
+        Questions::addList($A_questions);
+        unlink($S_path);
+        header("location: /admin");
+    }
 }

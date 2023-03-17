@@ -40,4 +40,25 @@ final class Users extends Model{
         $O_sth->execute();
         return ($O_sth-> fetch());
     }
+
+    public static function selectMyScore(string $S_id):array{
+        $O_con = Connection::initConnection();
+        $S_stmnt = "SELECT * FROM Scores, Rooms WHERE user_id = :id AND room_id = Rooms.id";
+        $O_sth = $O_con->prepare($S_stmnt);
+        $O_sth -> bindValue(":id", $S_id, PDO::PARAM_STR);
+        $O_sth->execute();
+        $A_data = $O_sth -> fetchAll();
+        return $A_data;
+    }
+
+    public static function selectMyFeedBack(string $S_id):array{
+        $O_con = Connection::initConnection();
+        $S_stmnt = "SELECT f.id, rating, comment, r.name , f.user_id, f.room_id FROM feedback f, Rooms r WHERE user_id = :id AND room_id = r.id";
+        $O_sth = $O_con->prepare($S_stmnt);
+        $O_sth -> bindValue(":id", $S_id, PDO::PARAM_STR);
+        $O_sth->execute();
+        $A_data = $O_sth -> fetchAll();
+        return $A_data;
+    }
+
 }
