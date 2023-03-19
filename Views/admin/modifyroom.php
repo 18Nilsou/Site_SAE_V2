@@ -8,7 +8,7 @@ echo '<section class="tab">
                 <label>Liste des utilisateurs </label>
                 <input type="hidden" name="roomId" value='. $A_view['room']['id'] .'>
                 <textarea id="invite-users-list" type="text" name="userList" placeholder="example1@gmail.com,example2@gmail.com" required></textarea>
-                <input class="black-button" type="submit">
+                <input class="black-button" type="submit" id="invite-users-submit">
             </section>
         </form>
         <form id="unsuscribe-user-form" action="/admin/blacklistuser" method="post">
@@ -23,7 +23,16 @@ echo '<section class="tab">
                 </select>
                 <input type="submit" class="black-button" value="Désinscrire">
             </section>
-        </form>
+        </form>';
+        if (isset($A_view['unSignedUsers'])) {
+            $S_users = '';
+            echo '<h3>Utilisateurs qui n\'ont pas été invités car ils ne sont pas inscrits</h3>';
+            foreach ($A_view['unSignedUsers'] as $user) {
+                $S_users .= $user .  " ";
+            }
+            echo '<p id="unSignedUsers">'.$S_users.'</p>';
+        }
+echo '
     </section>
     <section class="multiplayer-containers">
          <form action="/admin/modifyroomdates" method="post">

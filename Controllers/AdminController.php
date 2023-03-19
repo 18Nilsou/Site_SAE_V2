@@ -68,9 +68,15 @@ final class AdminController
         foreach ($A_guests as $A_guest) {
             $A_guestUsers[] = Users::selectById($A_guest['user_id']);
         }
-        View::show("admin/modifyroom", array('room' => $A_room,
-            'questions' => Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom"),
-            'guestUsers' => $A_guestUsers));
+        if (isset($A_parametres[1])) {
+            View::show("admin/modifyroom", array('room' => $A_room,
+                'questions' => Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom"),
+                'guestUsers' => $A_guestUsers, 'unSignedUsers' => $A_parametres[1]));
+        } else {
+            View::show("admin/modifyroom", array('room' => $A_room,
+                'questions' => Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom"),
+                'guestUsers' => $A_guestUsers));
+        }
     }
 
     public function modifyroomdatesAction(Array $A_parametres = null, Array $A_postParams = null): void
@@ -99,6 +105,7 @@ final class AdminController
     }
 
     public function inviteusersAction($A_parametres = null, Array $A_postParams = null) {
+        $A_unSignedUsers = array();
         $A_room = Rooms::selectById($A_postParams['roomId']);
         if ($A_room['admin_id'] != Session::getSession()['id']) {
             header('Location: /admin/multiplayer');
@@ -113,10 +120,13 @@ final class AdminController
             if(Users::checkIfExistsByEmail($S_UserMail)) {
                 Whitelist::create(array('user_id' => Users::selectByEmail($S_UserMail)['id'], 'room_id' => $A_postParams['roomId']));
                 Mailer::sendMail($S_UserMail, $A_inviteMessageContent);
+            } else {
+                $A_unSignedUsers [] = $S_UserMail;
             }
         }
-        header('Location: /admin/modifyroom/'. $A_room['id']);
-        exit;
+        $A_parametres[0] = $A_postParams['roomId'];
+        $A_parametres[1] = $A_unSignedUsers;
+        $this->modifyroomAction($A_parametres, $A_postParams);
     }
 
     public function modifyOrDeleteQuestionAction(Array $A_parametres = null, Array $A_postParams = null) : void{
