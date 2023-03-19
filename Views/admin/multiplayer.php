@@ -14,6 +14,8 @@ echo '<section class="tab">
             <p>Nom : ' . $A_room['name'] . '</p>
             <p>Code : '. $A_room['id'] .'</p>
             <p>Statut : '.Rooms::getStatus($A_room['start_date'], $A_room['end_date']).'</p>
+            <p>Ouverture : '.date("j/m/Y H:i",strtotime($A_room['start_date'])).'</p>
+            <p>Fermeture : '.date("j/m/Y H:i",strtotime($A_room['end_date'])).'</p>
             <a class="update-room" href="/admin/modifyroom/'. $A_room['id'] .'">Modifier 📝</a>
             <a class="update-room" href="/admin/deleteroombyid/'. $A_room['id'] .'">Supprimer ❌</a>
         </section>';

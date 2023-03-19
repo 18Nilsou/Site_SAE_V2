@@ -34,17 +34,14 @@
 .rooms-already-exists {
     color: white;
     background-color: rgb(58, 95, 224);
-    margin-left: 5em;
-    margin-right: 5em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 2em;
     border-radius: 2em;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
-}
-
-.rooms-already-exists {
-    margin-bottom: 2em;
 }
 
 .update-room {
