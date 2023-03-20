@@ -7,9 +7,10 @@ final class RetrievepasswordController{
     }
 
     public function steptwoAction(Array $A_parametres = null, Array $A_postParams = null): void{
-        if(Users::checkIfExistsByEmail($A_postParams['id'])){  
+        $A_user = Users::selectByEmail($A_postParams['email']);
+        if(isset($A_user)){  
             $I_token = Retrievepassword::genToken();
-            Retrievepassword::sendMail($A_postParams['id'], $I_token);
+            Retrievepassword::sendMail($A_user, $I_token);
             View::show("retrievepassword/newpassword");
         }
         else{
@@ -18,9 +19,9 @@ final class RetrievepasswordController{
     }
 
     public function newpasswordAction(Array $A_parametres = null, Array $A_postParams = null) : void{
-        if(Retrievepassword::checkToken($A_postParams['token'], $A_postParams['email'])){
+        $A_user = Users::selectByEmail($A_postParams['email']);
+        if(Retrievepassword::checkToken($A_postParams['token'], $A_user['id'])){
             unset($A_postParams['token']);
-            $A_user = Users::selectByEmail($A_postParams['email']);
             $S_id = $A_user['id'];
             unset($A_user);
             $A_postParams['password'] = hash('sha512', $A_postParams['password'].$S_id);

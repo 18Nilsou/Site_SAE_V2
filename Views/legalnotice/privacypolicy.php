@@ -1,4 +1,4 @@
-<h1>Politique de confidentialité</h1>
+<h1>Politiques de confidentialité</h1>
 	<p>Nous attachons une grande importance à la protection de la vie privée de nos utilisateurs et à la sécurité de leurs données personnelles. 
         Cette politique de confidentialité décrit les informations que nous collectons, comment nous les utilisons et les mesures que nous prenons 
         pour protéger la vie privée de nos utilisateurs.</p>
