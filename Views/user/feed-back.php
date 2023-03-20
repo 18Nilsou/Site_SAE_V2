@@ -5,8 +5,8 @@
 
 foreach ($A_view as $A_feedback){
     echo '<div class="comment">Room : ' .$A_feedback['name'].'<br> 
-        Mon note :'.$A_feedback['rating'].'/5  <br> 
-        Mon commentaire :'.$A_feedback['comment'].'<br>
+        <p>Ma note :'.$A_feedback['rating'].'/5  <br> 
+        Mon commentaire :'.$A_feedback['comment'].'</p><br>
         <form method="post" action="/feedback/delete">
         <input type="hidden" name="id" value="'.$A_feedback['id'].'">
         <input type="submit" value="Suprimer">
