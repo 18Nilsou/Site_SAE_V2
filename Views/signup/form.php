@@ -1,4 +1,4 @@
-<form class="signForm" method="post" action="signup/register">
+<form class="signForm" method="post" action="Checkemail">
     <h2 class="form-title">Inscription</h2>
     <label for="id">Pseudo :</label>
     <input class="id-form-input" type="text" placeholder="Votre pseudo" name="id" required>
