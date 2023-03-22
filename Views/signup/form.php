@@ -1,8 +1,14 @@
+<<?php
+echo '
 <section id="form-container">
     <form class="signForm" method="post" action="/checkemail">
         <h2 class="form-title">Inscription</h2>
         <label for="id">Pseudo :</label>
-        <input class="id-form-input" type="text" placeholder="Votre pseudo" name="id" required>
+        <input class="id-form-input" type="text" placeholder="Votre pseudo" name="id" required>';
+        if(isset($A_view['error'])) {
+            echo '<p>' . $A_view['error'] . '</p>';
+        }
+echo '
         <label for="id">Email :</label>
         <input class="id-form-input" type="email" placeholder="Votre email" name="email" title="Entrez un email valide" required>
         <label for="id">Nom :</label>
@@ -21,5 +27,5 @@
         <input class="submit" type="submit">
     </form>
 </section>
-<script type='text/javascript' src='/static/js/password-check.js'></script>
-<script type='text/javascript' src='/static/js/password-visibility.js'></script>
+<script type="text/javascript" src="/static/js/password-check.js"></script>
+<script type="text/javascript" src="/static/js/password-visibility.js"></script>';
