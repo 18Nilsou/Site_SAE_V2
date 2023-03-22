@@ -27,6 +27,13 @@ final class Users extends Model{
         return 'visitor';
     }
 
+    public static function getStatus($S_id){
+        if(Admins::selectById($S_id)) {
+            return 'admin';
+        }
+        return 'user';
+    }
+
     public static function checkIfExistsByEmail(string $S_email):bool{
         $A_user = self::selectByEmail($S_email);
         return isset($A_user['id']);

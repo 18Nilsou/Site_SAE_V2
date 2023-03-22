@@ -5,7 +5,6 @@ final class CheckemailController{
     public function defaultAction(Array $A_parametres = null, Array $A_postParams = null): void{
         if(!Users::checkIfExistsByEmail($A_postParams['email'])){
             Checkemail::sendMail($A_postParams);
-            View::show("checkemail/form", $A_postParams);
         }
         header("location: /signup");
         exit;
@@ -25,6 +24,7 @@ final class CheckemailController{
                 exit;
             }
         }
-        echo'la fin';
+        header("location: /signup");
+        exit;
     }
 }
