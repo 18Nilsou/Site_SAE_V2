@@ -1,7 +1,15 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body{
     font-family: -apple-system, Helvetica Neue, sans-serif;
     margin: 0;
     background-color: #F5F6F8;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header nav{
@@ -98,9 +106,9 @@ footer{
     justify-content: space-around;
     background-color: #1B1C1E;
     color: aliceblue;
-    font-size: 200%;
-    height: 150px;
-
+    font-size: 120%;
+    height: 90px;
+    margin-top: auto;
 }
 
 footer a{
