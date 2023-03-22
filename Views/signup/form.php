@@ -1,7 +1,14 @@
-<form class="signForm" method="post" action="signup/register">
+<?php
+
+echo '
+<form class="signForm" method="post" action="/signup/register">
     <h2 class="form-title">Inscription</h2>
     <label for="id">Pseudo :</label>
-    <input class="id-form-input" type="text" placeholder="Votre pseudo" name="id" required>
+    <input class="id-form-input" type="text" placeholder="Votre pseudo" name="id" required>';
+    if(isset($A_view['error'])) {
+        echo '<p>' . $A_view['error'] . '</p>';
+    }
+echo '
     <label for="id">Email :</label>
     <input class="id-form-input" type="email" placeholder="Votre email" name="email" title="Entrez un email valide" required>
     <label for="id">Nom :</label>
@@ -19,5 +26,5 @@
     <p class="redirections-sign">Déjà inscris ? <a href="/signin">Connectez vous !</a></p>
     <input class="submit" type="submit">
 </form>
-<script type='text/javascript' src='/static/js/password-check.js'></script>
-<script type='text/javascript' src='/static/js/password-visibility.js'></script>
+<script type="text/javascript" src="/static/js/password-check.js"></script>
+<script type="text/javascript" src="/static/js/password-visibility.js"></script>';
