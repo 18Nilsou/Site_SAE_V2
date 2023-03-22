@@ -20,9 +20,9 @@ final class DoubleAuthentication extends Model{
         if(self::create($A_params)){
 
             $A_mailContent['subject'] = "Double Authentication";
-            $A_mailContent['body'] = "Voici votre lien il valable pendant 10min : locahost/DoubleAuthentication/steptwo/".$A_params['token'].'/'.$A_params['id'];
+            $A_mailContent['body'] = "Voici votre lien il valable pendant 10min : 127.0.0.1/DoubleAuthentication/steptwo/".$A_params['token'].'/'.$A_params['id'];
             Mailer::sendMail($S_email, $A_mailContent);
-            
+
         }
     }
 

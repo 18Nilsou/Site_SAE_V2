@@ -17,7 +17,7 @@ final class Checkemail extends Model{
         $A_params['password'] = hash('sha512', $A_params['password'].$A_params['id']);
         if(self::create($A_params)){
             $A_mailContent['subject'] = "Vérification d'email";
-            $A_mailContent['body'] = "Voici votre lien valable pendant 10min : locahost/checkemail/steptwo/".$A_params['token'];
+            $A_mailContent['body'] = "Voici votre lien valable pendant 10min : 127.0.0.1/checkemail/steptwo/".$A_params['token'];
             Mailer::sendMail($A_params['email'], $A_mailContent);
         }
     }
