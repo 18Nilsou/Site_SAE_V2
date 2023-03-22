@@ -25,7 +25,7 @@ final class Questions extends Model{
                                 <th><textarea name='assignement' maxlength='255' rows='3' >".$A_question["assignement"]." </textarea></th>
                                 <th><input type='text' name='suggestion' maxlength='255' size='25' value='".$A_question["suggestion"]."'></th>
                                 <th><input type='text' name='answer'  maxlength='255' size='25' value='".$A_question["answer"]."'></th>
-                                <th><input type='submit' name='submit' value='Modifier'></th>
+                                <th><input type='submit' name='submit' id='modify' value='Modifier'></th>
                                 <th><input type='submit' name='submit' value='Supprimer'></th>
                             </tr>
                         </form>";
@@ -35,7 +35,7 @@ final class Questions extends Model{
     }
 
     public static function form(array $A_param):bool{
-        if($A_param['submit']=="Modifier"){
+        if($A_param['submit']=="Valider"){
             $I_id = $A_param['id'];
             unset($A_param['id']);
             unset($A_param['submit']);

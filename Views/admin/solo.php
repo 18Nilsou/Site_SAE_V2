@@ -68,3 +68,4 @@
     <?php echo($A_view['play']);?>
 </div>
 </section>
+<script type="text/javascript" src="/static/js/modify-questions.js"></script>

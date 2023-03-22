@@ -66,4 +66,5 @@ echo '
 echo '
     </section>
 </section>
-<script type="text/javascript" src="/static/js/check-room-date-validity.js"></script>';
+<script type="text/javascript" src="/static/js/check-room-date-validity.js"></script>
+<script type="text/javascript" src="/static/js/modify-questions.js"></script>';
