@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width">
         <title>Find the breach</title>
+        <link rel="icon" type="image/x-icon" href="/static/pictures/favicon.ico">
         <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
         <link rel="stylesheet" type="text/css" href="/static/styles/form.css">
         <link rel="stylesheet" type="text/css" href="/static/styles/home.css">
