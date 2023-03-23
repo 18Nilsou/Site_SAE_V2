@@ -1,6 +1,27 @@
 <?php
 
 final class Rooms extends Model{
+
+
+    public static function deleteByAdmin($S_id): bool{
+        if(!self::checkIfExistsById($S_id)){
+            return false;
+        }
+        
+        Scores::deleteByRoom($S_id);
+        Feedback::deleteByRoom($S_id);
+        Whitelist::deleteByRoom($S_id);
+        Questions::deleteByRoom($S_id);
+        $O_con = Connection::initConnection();
+        $S_stmnt = "DELETE FROM ROOMS WHERE admin_id = :id ";
+        $P_sth = $O_con->prepare($S_stmnt);
+        $P_sth-> bindValue(":id",$S_id,PDO::PARAM_STR);
+        $B_state = $P_sth->execute();
+        $O_con = null;
+        return $B_state;
+    }
+
+
     public static function selectRoomsByAdmin(string $S_id):array{
         $P_db = Connection::initConnection();
         $S_sql = "SELECT * FROM ROOMS WHERE admin_id = :admin_id";
