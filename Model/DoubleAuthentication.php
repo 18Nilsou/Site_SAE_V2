@@ -12,20 +12,22 @@ final class DoubleAuthentication extends Model{
     }
 
     public static function sendmail($A_params){
-
-        $A_params['token'] = self::genToken($A_params['id']);
+        unset($A_params['password']);
+        $A_params['token'] = self::genToken();
         $A_params['creation_date'] = date("d-M-Y H:i");
-
         $S_email = Users::selectById($A_params['id'])['email'];
+        
         if(self::create($A_params)){
             $A_mailContent['subject'] = "Double Authentification - Find the breach";
-            $A_mailContent['body'] = "Voici votre lien, il valable pendant 10min : https://findthebreach.ddns.net/DoubleAuthentication/steptwo/".$A_params['token'].'/'.$A_params['id'];
+            $A_mailContent['body'] = "Voici votre token, il valable pendant 10min :".$A_params['token'];
             Mailer::sendMail($S_email, $A_mailContent);
+            return true;
         }
+        return false;
     }
 
-    public static function genToken($S_id){
-       return hash('sha512', rand(100000, 999999).$S_id);
+    public static function genToken(){
+       return rand(100000, 999999);
     }
 
 }

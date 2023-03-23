@@ -1,5 +1,5 @@
 <section id="form-container">
-    <form class="signForm" method="post" action="DoubleAuthentication">
+    <form class="signForm" method="post" action="Signin/connect">
         <h2 class="form-title">Connexion</h2>
         <label for="id">Pseudo :</label>
         <input class="id-form-input" type="text" placeholder="Votre pseudo" name="id" required>
