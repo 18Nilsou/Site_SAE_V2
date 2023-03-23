@@ -16,8 +16,6 @@
             <input type="text"  placeholder="Réponse" name="answer" maxlength="255" required="required"><br/>
             <label>Indice : </label>
             <textarea name="suggestion" rows="5" cols="30" maxlength="255" placeholder="Indice" aria-required="true"></textarea><br/>
-            <label>Numéro de la question (pas obligatoire) : </label>
-            <input type="number" name="order_question"><br/>
             <input type="submit" value="Valider">
         </form>
         <form class="questionForm" method="post"  enctype='multipart/form-data' action="admin/getquestionfromfile">
@@ -43,8 +41,6 @@
             <input type="text"  placeholder="Réponse" name="answer" maxlength="255" required="required"><br/>
             <label>Indice : </label>
             <textarea name="suggestion" rows="5" cols="30" maxlength="255" placeholder="Indice" aria-required="true"></textarea><br/>
-            <label>Numéro de la question (pas obligatoire) : </label>
-            <input type="number" name="order_question"><br/>
             <input type="submit" value="Valider">
         </form>
         <form class="questionForm" method="post"  enctype='multipart/form-data' action="admin/getquestionfromfile">
