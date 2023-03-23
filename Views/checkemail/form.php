@@ -1,4 +1,3 @@
-
 <section id="form-container">
     <form class="signForm" method="post" action="checkemail">
         <h2 class="form-title">Vérification de l'email</h2>
