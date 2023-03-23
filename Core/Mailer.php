@@ -17,7 +17,7 @@ class Mailer
      * @param Array $S_mailContent An array containing the subject and body of the mail
      * @return void
      */
-    public static function sendMail(string $S_mail, Array $S_mailContent) : void {
+    public static function sendMail(string $S_mail, Array $S_mailContent) : bool {
         //We create an instance of PHPMailer
         $P_sentMail = new \PHPMailer\PHPMailer\PHPMailer();
 
@@ -59,10 +59,12 @@ class Mailer
 
         //We add the email address of the recipient
         $P_sentMail->addAddress($S_mail);
-
-        $P_sentMail->send();
-
-        //We close the SMTP connection to the GMAIL account
+        if ($P_sentMail->send()){
+             //We close the SMTP connection to the GMAIL account
+            $P_sentMail->smtpClose();
+            return true;
+        }
         $P_sentMail->smtpClose();
+        return false;    
     }
 }
