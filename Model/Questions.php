@@ -2,6 +2,39 @@
 
 final class Questions extends Model{
 
+    
+    public static function deleteQuestion($S_room_id, $I_order_question): bool{
+
+        $I_max = self::getNumberOfQuestionByRoom($S_room_id);
+
+        $O_con = Connection::initConnection();
+        $S_stmnt = "DELETE FROM QUESTIONS WHERE order_question = :order_question and room_id = :room_id ";
+        $P_sth = $O_con->prepare($S_stmnt);
+        $P_sth -> bindValue(":room_id", $S_room_id, PDO::PARAM_STR);
+        $P_sth -> bindValue(":order_question", $I_order_question, PDO::PARAM_INT);
+        $B_state = $P_sth->execute();
+        $O_con = null;
+
+        if ($I_order_question != $I_max){
+            $A_questions = self::selectByRoom($S_room_id);
+            $I_num = 0;
+
+            while($A_questions[$I_num]['order_question'] < $I_order_question){
+                unset($A_questions[$I_num]);
+                ++$I_num;
+            }
+            foreach($A_questions as $A_question){
+                $A_question['order_questionold'] = $A_question['order_question'];
+                $A_question['order_question'] = $A_question['order_question'] - 1;
+                var_dump($A_question['order_questionold']);
+                self::updateOrderQuestion($A_question);
+            }
+        }
+
+        return $B_state;
+    }
+    
+
     public static function selectByRoom(string $S_room):array{
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT * FROM Questions WHERE room_id = :room_id order by order_question";
@@ -16,7 +49,6 @@ final class Questions extends Model{
         $A_Allquestions = self::selectByRoom($S_room);
         foreach($A_Allquestions as $key => $A_question){
             $S_array .= "<form action='".$S_action."' method='post'>
-                            <input type='hidden' name='id' value='".strval($A_question["id"])."'>
                             <input type='hidden' name='order_question' value='".$A_question["order_question"]."'>
                             <input type='hidden' name='room_id' value='".$S_room."'>
                             <tr>
@@ -34,14 +66,43 @@ final class Questions extends Model{
         return $S_array;
     }
 
+    public static function updateQuestion(array $A_postParams): bool{
+        $O_con = Connection::initConnection();
+        $S_stmnt = "UPDATE QUESTIONS SET title = :title , assignement = :assignement , suggestion = :suggestion , answer = :answer WHERE order_question = :order_question and room_id = :room_id ";
+        $P_sth = $O_con->prepare($S_stmnt);
+        $P_sth -> bindValue(":room_id", $A_postParams['room_id'], PDO::PARAM_STR);
+        $P_sth -> bindValue(":order_question", $A_postParams['order_question'], PDO::PARAM_INT);
+        $P_sth -> bindValue(":assignement", $A_postParams['assignement'], PDO::PARAM_STR);
+        $P_sth -> bindValue(":title", $A_postParams['title'], PDO::PARAM_STR);
+        $P_sth -> bindValue(":answer", $A_postParams['answer'], PDO::PARAM_STR);
+        $P_sth -> bindValue(":suggestion", $A_postParams['suggestion'], PDO::PARAM_STR);
+        $B_state = $P_sth->execute();
+        $O_con = null;
+        return $B_state;
+    }
+
+    public static function updateOrderQuestion(array $A_postParams): bool{
+        $O_con = Connection::initConnection();
+        $S_stmnt = "UPDATE QUESTIONS SET title = :title , assignement = :assignement , suggestion = :suggestion , answer = :answer , order_question = :order_question WHERE order_question = :order_questionold and room_id = :room_id ";
+        $P_sth = $O_con->prepare($S_stmnt);
+        $P_sth -> bindValue(":room_id", $A_postParams['room_id'], PDO::PARAM_STR);
+        $P_sth -> bindValue(":order_question", $A_postParams['order_question'], PDO::PARAM_INT);
+        $P_sth -> bindValue(":order_questionold", $A_postParams['order_questionold'], PDO::PARAM_INT);
+        $P_sth -> bindValue(":assignement", $A_postParams['assignement'], PDO::PARAM_STR);
+        $P_sth -> bindValue(":title", $A_postParams['title'], PDO::PARAM_STR);
+        $P_sth -> bindValue(":answer", $A_postParams['answer'], PDO::PARAM_STR);
+        $P_sth -> bindValue(":suggestion", $A_postParams['suggestion'], PDO::PARAM_STR);
+        $B_state = $P_sth->execute();
+        $O_con = null;
+        return $B_state;
+    }
+
     public static function form(array $A_param):bool{
         if($A_param['submit']=="Valider"){
-            $I_id = $A_param['id'];
-            unset($A_param['id']);
             unset($A_param['submit']);
-            return self::updateById($A_param, $I_id);
+            return self::updateQuestion($A_param);
         }
-        return self::deleteByID($A_param['id']);
+        return self::deleteQuestion($A_param['room_id'],$A_param['order_question']);
     }
 
     public static function getNumberOfQuestionByRoom(string $S_room){
@@ -55,45 +116,14 @@ final class Questions extends Model{
     }
 
     public static function add(array $A_param){
-        $I_max = self::getNumberOfQuestionByRoom($A_param['room_id']);
-        if($A_param['order_question'] == ""){
-            unset($A_param['submit']);
-            $A_param['order_question'] = $I_max+1;
-            return Questions::create($A_param);
-        }
-
-        if($A_param['order_question'] == $I_max+1){
-            return Questions::create($A_param);
-        }
-
-        if($A_param['order_question'] > $I_max + 1){
-            $A_param['order_question'] = $I_max + 1; 
-            return Questions::create($A_param);
-        }
-
-        $A_allQuestions = self::selectByRoom($A_param['room_id']);
-        foreach($A_allQuestions as $key => $A_question){
-            if($A_question['order_question'] = $A_param['order_question']){
-                $A_question['order_question'] = intval($A_question['order_question']) + 1;
-                self::updateById($A_question, $A_question['id']);
-            }
-        }
+        $A_param["order_question"] = self::getNumberOfQuestionByRoom($A_param['room_id']) + 1;
         return Questions::create($A_param);
     }
 
     public static function addList($A_questions){
         foreach($A_questions as $A_question){
-            self::delete($A_question["order_question"], $A_question["room_id"]);
+            self::deleteQuestion($A_question["room_id"], $A_question["order_question"]);
             Questions::create($A_question);
         }
-    }
-
-    public static function delete($I_order, $S_room){
-        $O_con = Connection::initConnection();
-        $S_stmnt = "Delete from rooms where room_id = :room_id and order_question = :order";
-        $O_sth = $O_con->prepare($S_stmnt);
-        $O_sth -> bindValue(":room_id", $S_room, PDO::PARAM_STR);
-        $O_sth -> bindValue(":order", $I_order, PDO::PARAM_INT);
-        $O_sth->execute();
     }
 }
