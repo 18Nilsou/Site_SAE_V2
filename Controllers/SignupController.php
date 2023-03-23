@@ -11,7 +11,11 @@ final class SignupController{
     public function registerAction(Array $A_parametres = null, Array $A_postParams = null):void{
         $A_postParams['password'] = hash('sha512', $A_postParams['password'].$A_postParams['id']);
 
-        if(!Users::checkIfExistsByEmail($A_postParams['email']) && !Users::checkIfExistsByEmail($A_postParams['id'])){
+        if(!Users::checkIfExistsByEmail($A_postParams['email'])){
+            if (!Users::checkIfExistsByEmail($A_postParams['id'])){
+                header("location: /signup/formError");
+                exit;
+            }
             Checkemail::sendMail($A_postParams['id'], $A_postParams['email']);
             View::show("checkemail/form",$A_postParams);
         }else{
