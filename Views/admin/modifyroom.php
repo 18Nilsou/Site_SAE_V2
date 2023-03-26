@@ -40,9 +40,9 @@ echo '
             <section id="invite-users-form">
                 <label>Date d\'ouverture : </label>
                 <input type="hidden" name="roomId" value='. $A_view['room']['id'] .'>
-                <input type="datetime-local" name="start_date" id="start_date">
+                <input type="datetime-local" name="start_date" id="start_date" required>
                 <label>Date de fermeture : </label>
-                <input type="datetime-local" name="end_date" id="end_date">
+                <input type="datetime-local" name="end_date" id="end_date" required>
                 <input class="black-button" type="submit" id="room_date">
             </section>
         </form>
