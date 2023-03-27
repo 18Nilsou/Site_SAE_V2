@@ -7,6 +7,13 @@
     <div class="addquestions">
         <form class="questionForm" method="post" action="admin/addQuestion">
             <h3>Ajouter une Question</h3>
+            <legend>Choisir la salle:</legend>
+            <div>
+                <label for="game">Jeu : </label>
+                <input type="radio" id="game" name="room_id" value="game">
+                <label for="practice">Entrainement : </label>
+                <input type="radio" id="practice" name="room_id" value="practice">
+            </div>
             <label>Titre de la question : </label>
             <input type="text"  placeholder="Titre" name="title" maxlength="40" required="required"><br/>
             <label>Consigne :</label>
@@ -15,19 +22,10 @@
             <input type="text"  placeholder="Réponse" name="answer" maxlength="255" required="required"><br/>
             <label>Indice : </label>
             <textarea name="suggestion" rows="5" cols="30" maxlength="255" placeholder="Indice" aria-required="true"></textarea><br/>
-            <legend>Choisir la salle:</legend>
-            <div>
-                <label for="game">Jeu : </label>
-                <input type="radio" id="game" name="room_id" value="game">
-                <label for="practice">Entrainement : </label>
-                <input type="radio" id="practice" name="room_id" value="practice">
-            </div>
-            <br>
             <input type="submit" value="Valider">
         </form>
         <form class="questionForm" method="post"  enctype='multipart/form-data' action="admin/getquestionfromfile">
-            <h3>Ajouter des questions avec un fichier dans la partie Entrainement</h3>
-            <a href="/admin/getfilequestions">Exemple de format du fichier.csv</a>
+            <h3>Ajouter des questions avec un fichier</h3>
             <legend>Choisir la salle:</legend>
             <div>
                 <label for="game">Jeu : </label>
@@ -35,7 +33,7 @@
                 <label for="practice">Entrainement : </label>
                 <input type="radio" id="practice" name="room_id" value="practice">
             </div>
-            <br>
+            <a href="/admin/getfilequestions">Exemple de format du fichier.csv</a>
             <label>Titre de la question : </label>
             <input type="file" name="file" id="file" accept=".csv" required="required"><br/>
             <input type="submit" value="Valider">

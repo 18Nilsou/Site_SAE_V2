@@ -25,13 +25,17 @@ echo '
     <section class="multiplayer-containers">
         <form id="create-room-form" action="/admin/createroom" method="post">
             <h3>Créer un salon</h3>
-            <section>
-                <label>Nom du salon </label>
-                <input type="text" name="name" required>
-                <input type="datetime-local" name="start_date" id="start_date">
-                <input type="datetime-local" name="end_date" id="end_date">
+                <section>
+                    <label for="room-name">Nom du salon :</label>
+                    <input type="text" name="name" required>
+                </section>
+                <section>
+                    <label for="start_date">Date d\'ouverture :</label>
+                    <input type="datetime-local" name="start_date" id="start_date">
+                    <label for="end_date">Date de fermeture :</label>
+                    <input type="datetime-local" name="end_date" id="end_date">
+                </section>
                 <input type="submit" class="black-button" id="room_date" value="Créer">
-            </section>
         </form>
     </section>
 </section>
