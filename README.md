@@ -36,7 +36,17 @@ Lorsque nous sommes connectés avec un compte administrateur , nous avons diffé
 En effet, nous pouvons cliquer sur "Administrateur".
 - Page adminstrateur :
   * Question des parties solo
-![page de MDO Oublié](readmePictures/imageQuestionSolo.png)
+![page Question_Parties_Solo](readmePictures/imageQuestionSolo.png)
+Nous pouvons ajouter des questions pour la partie "Jeu" ou "ENtrainement".
+![page Question_Parties_Solo_2](readmePictures/imageAjoutQuest.png)
+Il est aussi tout à fait possible de les modifier ou les upprimer.
+  * Gestion des parties multijoueur
+![page Modif_Salle](readmePictures/imageModifSalle.png)
+![page Modif_Salle2](readmePictures/imageModifSalle2.png)
+    En accédant à cette page , nous pouvons inviter des joueurs à une salle de jeu , modifier les horaires d’ouverture et de fermeture de cette dernière. En tant qu’administrateur , nous avons aussi la possibilité d’effectuer des modifications sur les questions , que ce soit d’en ajouter , les modifier ou les supprimer.
+
+
+
 
   
 
