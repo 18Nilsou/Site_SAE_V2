@@ -11,6 +11,7 @@ final class Users extends Model{
         Scores::deleteByUser($S_id);
         Feedback::deleteByUser($S_id);
         Whitelist::deleteByUser($S_id);
+
         if(Session::isAdmin()){
             Admins::deleteByID($S_id);
         }

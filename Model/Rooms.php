@@ -2,16 +2,17 @@
 
 final class Rooms extends Model{
 
-
     public static function deleteByAdmin($S_id): bool{
-        if(!self::checkIfExistsById($S_id)){
-            return false;
+
+
+        $A_rooms = self::selectRoomsByAdmin($S_id);
+        foreach ($A_rooms as $A_room){
+            Scores::deleteByRoom($A_room['id']);
+            Feedback::deleteByRoom($A_room['id']);
+            Whitelist::deleteByRoom($A_room['id']);
+            Questions::deleteByRoom($A_room['id']);
         }
-        
-        Scores::deleteByRoom($S_id);
-        Feedback::deleteByRoom($S_id);
-        Whitelist::deleteByRoom($S_id);
-        Questions::deleteByRoom($S_id);
+
         $O_con = Connection::initConnection();
         $S_stmnt = "DELETE FROM ROOMS WHERE admin_id = :id ";
         $P_sth = $O_con->prepare($S_stmnt);

@@ -5,7 +5,6 @@ final class Admins extends Model{
         if(!self::checkIfExistsById($S_id)){
             return false;
         }
-
         Rooms::deleteByAdmin($S_id);
         $O_con = Connection::initConnection();
         $S_stmnt = "DELETE FROM Admins WHERE ID = :id ";
