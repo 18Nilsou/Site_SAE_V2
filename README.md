@@ -19,7 +19,9 @@ Lorsque vous accédez à la page d'accueil, vous avez la possibilité de lire un
  - Page pour mot de passe oublié :
 
 ![page de MDP Oublie](readmePictures/imageMDPOublie.png)
-Cette page nous permet de faire une demande afin de changer de mot de passe lorsque nous avons oubliés ce dernier. Si nous avons indiqués une adresse mail qui est présente dans nos données, un mail nous est envoyé avec un Token .
+
+Cette page nous permet de faire une demande afin de changer de mot de passe lorsque nous avons oubliés ce dernier. Si nous avons indiqués une adresse mail qui est présente dans nos données, un mail nous est envoyé avec un Token.
+
 ![page Authentification](readmePictures/imageAuthentification.png)
 Ce Token nous permet d'effectuer une double authentification afin de sécuriser au maximum notre compte.
 
