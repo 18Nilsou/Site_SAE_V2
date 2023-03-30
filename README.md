@@ -39,6 +39,7 @@ Lorsque nous sommes connectés avec un compte administrateur , nous avons diffé
 En effet, nous pouvons cliquer sur "Administrateur".
 - Page adminstrateur :
   * Question des parties solo
+
 ![page Question_Parties_Solo](readmePictures/imageQuestionSolo.png)
 Nous pouvons ajouter des questions pour la partie "Jeu" ou "Entrainement".
 ![page Question_Parties_Solo_2](readmePictures/imageAjoutQuest.png)
