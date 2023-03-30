@@ -18,7 +18,10 @@ Lorsque vous accédez à la page d'accueil, vous avez la possibilité de lire un
 - Page de connexion :
 ![page de connexion](readmePictures/PageConnexion.png)
   Cette page nous offre la possibilité de se connecter. Si nous avons oublié notre mot de passe , nous nous diriger vers la page « Mot de passe oublié ». Cependant, si nous n’avons pas de compte , nous pouvons cliquer sur « Créez en un » afin de s’inscrire. 
-
+  
+ - Page pour mot de passe oublié :
+![page de MDP Oublie](readmePictures/ImageMDPOublie.png)
+Cette page nous permet de faire une demande afin de changer de mot de passe lorsque nous avons oubliés ce dernier. Si nous avons indiqués une adresse mail qui est présente dans nos données, un mail nous est envoyé avec un Token . 
 
 **Après nous être connectés en tant que joueur :**
 
