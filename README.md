@@ -37,7 +37,7 @@ En effet, nous pouvons cliquer sur "Administrateur".
 - Page adminstrateur :
   * Question des parties solo
 ![page Question_Parties_Solo](readmePictures/imageQuestionSolo.png)
-Nous pouvons ajouter des questions pour la partie "Jeu" ou "ENtrainement".
+Nous pouvons ajouter des questions pour la partie "Jeu" ou "Entrainement".
 ![page Question_Parties_Solo_2](readmePictures/imageAjoutQuest.png)
 Il est aussi tout à fait possible de les modifier ou les upprimer.
   * Gestion des parties multijoueur
