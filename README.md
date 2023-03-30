@@ -1,9 +1,6 @@
 # SAE-S4-Site
 
 
-# SAE-S4-Site
-
-
 ## Guide d'utilisation Site Web
 
 - Page d'acceuil :
@@ -48,20 +45,3 @@ Il est aussi tout à fait possible de les modifier ou les upprimer.
 ![page Modif_Salle](readmePictures/imageModifSalle.png)
 ![page Modif_Salle2](readmePictures/imageModifSalle2.png)
     En accédant à cette page , nous pouvons inviter des joueurs à une salle de jeu , modifier les horaires d’ouverture et de fermeture de cette dernière. En tant qu’administrateur , nous avons aussi la possibilité d’effectuer des modifications sur les questions , que ce soit d’en ajouter , les modifier ou les supprimer.
-
-
-
-
-  
-
-
-
-
-
-
-
-
-  
-
-
-
