@@ -43,6 +43,11 @@ final class Session
         return null;
     }
 
+    /**
+     * Check if the current session status is "admin"
+     *
+     * @return bool
+     */
     public static function isAdmin(): bool {
         if (Session::getSession()['status'] == 'admin') {
             return true;
