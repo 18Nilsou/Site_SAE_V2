@@ -1,3 +1,5 @@
+// Update the active navbar item depending on the current page location
+// If the page is an admin page, add the "active" class to the corresponding navbar button
 let currentUrl = window.location.pathname;
 if (currentUrl === "/admin") {
     document.getElementById("solo-btn").className += " active";

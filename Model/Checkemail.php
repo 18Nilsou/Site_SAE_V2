@@ -1,8 +1,21 @@
 <?php
 
+/**
+ * Model class to interact with the DB table Checkmail
+ *
+ * @extends Model
+ * @final
+ */
 final class Checkemail extends Model{
 
-    public static function selectByToken(string $S_token){
+    /**
+     * Selects a record based on the token
+     *
+     * @param string $S_token The token to use for selection
+     *
+     * @return array
+     */
+    public static function selectByToken(string $S_token): array {
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT * FROM checkemail WHERE token = :token ";
         $P_sth = $O_con->prepare($S_stmnt);
@@ -10,8 +23,16 @@ final class Checkemail extends Model{
         $P_sth->execute();
         return $P_sth->fetch(PDO::FETCH_ASSOC);
     }
-  
-    public static function sendmail($S_id, $S_email){
+
+    /**
+     * Send an email with a token
+     *
+     * @param string $S_id    The id to use in the record
+     * @param string $S_email The email to send the token to
+     *
+     * @return bool
+     */
+    public static function sendmail(string $S_id, string $S_email): bool {
         $A_params['token'] = self::genToken();
         $A_params['creation_date'] = date("d-M-Y H:i");
         $A_params['id'] = $S_id;
@@ -23,8 +44,12 @@ final class Checkemail extends Model{
         return false;
     }
 
-    public static function genToken():int{
-       return rand(100000, 999999);
+    /**
+     * Generates a random token
+     *
+     * @return int
+     */
+    public static function genToken(): int {
+        return rand(100000, 999999);
     }
-
 }

@@ -1,7 +1,19 @@
 <?php
 
+/**
+ * Model class to interact with the DB table Rooms
+ *
+ * @extends Model
+ * @final
+ */
 final class Rooms extends Model{
 
+    /**
+     * Delete rooms by admin
+     *
+     * @param $S_id
+     * @return bool Whether the deletion was successful
+     */
     public static function deleteByAdmin($S_id): bool{
 
 
@@ -22,7 +34,13 @@ final class Rooms extends Model{
         return $B_state;
     }
 
-
+    /**
+     * Select rooms by admin
+     *
+     * @param string $S_id Admin ID
+     *
+     * @return array Rooms
+     */
     public static function selectRoomsByAdmin(string $S_id):array{
         $P_db = Connection::initConnection();
         $S_sql = "SELECT * FROM ROOMS WHERE admin_id = :admin_id";
@@ -32,7 +50,11 @@ final class Rooms extends Model{
         return $P_sth->fetchAll();
     }
 
-
+    /**
+     * Generate unique ID
+     *
+     * @return string Unique ID
+     */
     public static function uniqueId():string{
         $S_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $S_randomId = '';
@@ -44,6 +66,14 @@ final class Rooms extends Model{
         return $S_randomId;
     }
 
+    /**
+     * Get room status
+     *
+     * @param string $start_date Start date
+     * @param string $end_date End date
+     *
+     * @return string Status
+     */
     public static function getStatus($start_date=null, $end_date=null):string{
         date_default_timezone_set('Europe/Paris');
         if (!is_null($start_date) && !is_null($end_date)) {
@@ -55,6 +85,13 @@ final class Rooms extends Model{
         return "Indeterminable";
     }
 
+    /**
+     * Get score of users
+     *
+     * @param array $A_params Parameters
+     *
+     * @return array Score
+     */
     public static function getScore(array $A_params):array{
 
         $P_db = Connection::initConnection();

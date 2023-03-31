@@ -1,8 +1,19 @@
 <?php
 
-
+/**
+ * Abstract class Model provides methods to manipulate a database
+ *
+ * @abstract
+ */
 abstract class Model{
 
+    /**
+     * Selects a record from the database of the called class
+     *
+     * @param string $S_id The id of the record
+     *
+     * @return array The record with the given id
+     */
     public static function selectById($S_id) {
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT * FROM ".get_called_class()." WHERE ID = ? ";
@@ -13,6 +24,13 @@ abstract class Model{
         return $A_row;
     }
 
+    /**
+     * Deletes a record from the database of the called class
+     *
+     * @param string $S_id The id of the record
+     *
+     * @return bool Whether the record was deleted or not
+     */
     public static function deleteByID($S_id) : bool{
         if(!self::checkIfExistsById($S_id)){
             return false;
@@ -25,6 +43,13 @@ abstract class Model{
         return $B_state;
     }
 
+    /**
+     * Creates a record in the database of the called class
+     *
+     * @param Array $A_postParams The parameters of the record
+     *
+     * @return bool Whether the record is created or not
+     */
     public static function create(Array $A_postParams) : bool{
         $O_con = Connection::initConnection();
         $S_keys = " ";
@@ -43,6 +68,14 @@ abstract class Model{
         return $B_state;
     }
 
+    /**
+     * Updates a record in the database of the called class
+     *
+     * @param Array $A_postParams The parameters of the record
+     * @param string $S_id The id of the record
+     *
+     * @return bool Whether the record is updated or not
+     */
     public static function updateById(Array $A_postParams, $S_id ) : bool{
         $O_con = Connection::initConnection();
 
@@ -60,6 +93,11 @@ abstract class Model{
         return $B_state;
     }
 
+    /**
+     * Selects the number of records in the database of the called class
+     *
+     * @return int The number of records
+     */
     public static function selectHowMany() : int{
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT count(*) FROM ".get_called_class();
@@ -70,6 +108,11 @@ abstract class Model{
         return $A_row['count'];
     }
 
+    /**
+     * Selects all records from the database of the called class
+     *
+     * @return array All records
+     */
     public static function selectAll(): array{
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT * FROM ".get_called_class();
@@ -79,6 +122,13 @@ abstract class Model{
         return $P_sth->fetchAll();
     }
 
+    /**
+     * Checks if a record exists in the database of the called class
+     *
+     * @param string $S_id The id of the record
+     *
+     * @return bool Whether the record exists or not
+     */
     public static function checkIfExistsById($_id) : bool{
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT * FROM ".get_called_class()." WHERE ID = ? ";
