@@ -15,6 +15,11 @@ final class FeedbackController{
         header("location: /user");
     }
 
+    public function testAction(Array $A_parametres = null, Array $A_postParams = null){
+        echo'ben c est bon';
+        die;
+    }
+
     public function editFormAction(Array $A_parametres = null, Array $A_postParams = null){
         View::show("feedback/edit",$A_postParams);
     }

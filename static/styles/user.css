@@ -38,6 +38,7 @@
     height: 150px;
     width: 150px;
     text-align: center;
+    padding:10px;
 }
 
 .feedbacks{
@@ -54,7 +55,8 @@
     margin: 1%;
     border-radius: 2em;
     background-color: #3A5FE0;
-    height: 250px;
+    height: auto;
     width: 250px;
     text-align: center;
+    padding:10px;
 }
