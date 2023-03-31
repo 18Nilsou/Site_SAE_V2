@@ -63,9 +63,17 @@
         <a class='btn-how-to' href='https://bell-sw.com/pages/downloads/' target="_blank"><h3 class='btn-how-to-text'>Site du JDK de Liberica</h3></a>
     </section>
     <section class='how-to-use'>
-        <h3 id='how-to-title'>4. Lancement</h3>
+        <h3 id='how-to-title'>4. Dézipper l'application</h3>
         <section>
-            <p>Une fois java installé, vous pouvez double-cliquer sur le fichier .jar téléchargé afin de lancer l'application.
+            <p>Maintenant, il faut dézipper l'archive que vous avez téléchargé. Lors de l'exécution, le fichier jar
+            et le certificat doivent être placés dans le même dossier.</p>
+        </section>
+        <a class='btn-how-to' href='https://bell-sw.com/pages/downloads/' target="_blank"><h3 class='btn-how-to-text'>Site du JDK de Liberica</h3></a>
+    </section>
+    <section class='how-to-use'>
+        <h3 id='how-to-title'>5. Lancement</h3>
+        <section>
+            <p>Pour exécuter l'application, vous pouvez double-cliquer sur le fichier .jar téléchargé.
             Sinon, vous pouvez entrer la commande "java -jar FindTheBreachApp.jar" dans votre terminal où est présent le fichier.</p>
         </section>
         <a class='btn-how-to' href='https://bell-sw.com/pages/downloads/' target="_blank"><h3 class='btn-how-to-text'>Site du JDK de Liberica</h3></a>
