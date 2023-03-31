@@ -26,15 +26,16 @@
         </form>
         <form class="questionForm" method="post"  enctype='multipart/form-data' action="admin/getquestionfromfile">
             <h3>Ajouter des questions avec un fichier</h3>
+
             <legend>Choisir la salle:</legend>
             <div>
                 <label for="game">Jeu : </label>
                 <input type="radio" id="game" name="room_id" value="game">
                 <label for="practice">Entrainement : </label>
                 <input type="radio" id="practice" name="room_id" value="practice">
-            </div>
+            </div><br>
+
             <a href="/admin/getfilequestions">Exemple de format du fichier.csv</a>
-            <label>Titre de la question : </label>
             <input type="file" name="file" id="file" accept=".csv" required="required"><br/>
             <input type="submit" value="Valider">
         </form>

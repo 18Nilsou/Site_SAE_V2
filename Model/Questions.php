@@ -12,10 +12,18 @@ final class Questions extends Model{
         return $B_state;
     }
 
+    public static function selectOne($S_room_id, $I_order_question){
+        $O_con = Connection::initConnection();
+        $S_stmnt = "SELECT * FROM QUESTIONS WHERE order_question = :order_question and room_id = :room_id ";
+        $P_sth = $O_con->prepare($S_stmnt);
+        $P_sth -> bindValue(":room_id", $S_room_id, PDO::PARAM_STR);
+        $P_sth -> bindValue(":order_question", $I_order_question, PDO::PARAM_INT);
+        $P_sth -> execute();
+        return $P_sth -> fetch();
+    }
+
     public static function deleteQuestion($S_room_id, $I_order_question): bool{
-
         $I_max = self::getNumberOfQuestionByRoom($S_room_id);
-
         $O_con = Connection::initConnection();
         $S_stmnt = "DELETE FROM QUESTIONS WHERE order_question = :order_question and room_id = :room_id ";
         $P_sth = $O_con->prepare($S_stmnt);
@@ -23,11 +31,9 @@ final class Questions extends Model{
         $P_sth -> bindValue(":order_question", $I_order_question, PDO::PARAM_INT);
         $B_state = $P_sth->execute();
         $O_con = null;
-
-        if ($I_order_question != $I_max){
+        if (isset($I_max) && $I_order_question != $I_max){
             $A_questions = self::selectByRoom($S_room_id);
             $I_num = 0;
-
             while($A_questions[$I_num]['order_question'] < $I_order_question){
                 unset($A_questions[$I_num]);
                 ++$I_num;
@@ -35,7 +41,6 @@ final class Questions extends Model{
             foreach($A_questions as $A_question){
                 $A_question['order_questionold'] = $A_question['order_question'];
                 $A_question['order_question'] = $A_question['order_question'] - 1;
-                var_dump($A_question['order_questionold']);
                 self::updateOrderQuestion($A_question);
             }
         }
@@ -129,10 +134,4 @@ final class Questions extends Model{
         return Questions::create($A_param);
     }
 
-    public static function addList($A_questions){
-        foreach($A_questions as $A_question){
-            self::deleteQuestion($A_question["room_id"], $A_question["order_question"]);
-            Questions::create($A_question);
-        }
-    }
 }
