@@ -1,6 +1,29 @@
 <?php
 final class Users extends Model{
 
+
+    public static function deleteByID($S_id): bool{
+        if(!self::checkIfExistsById($S_id)){
+            return false;
+        }
+        DoubleAuthentication::deleteByID($S_id);
+        Retrievepassword::deleteByID($S_id);
+        Scores::deleteByUser($S_id);
+        Feedback::deleteByUser($S_id);
+        Whitelist::deleteByUser($S_id);
+
+        if(Session::isAdmin()){
+            Admins::deleteByID($S_id);
+        }
+        $O_con = Connection::initConnection();
+        $S_stmnt = "DELETE FROM USERS WHERE ID = :id ";
+        $P_sth = $O_con->prepare($S_stmnt);
+        $P_sth-> bindValue(":id",$S_id,PDO::PARAM_STR);
+        $B_state = $P_sth->execute();
+        $O_con = null;
+        return $B_state;
+    }
+
     public static function connect(array $A_getParams):string{
         $S_id = $A_getParams['id'];
         $A_user = self::selectById($S_id);
