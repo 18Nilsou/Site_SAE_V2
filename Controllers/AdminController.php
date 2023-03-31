@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Class AdminController used to manage the admin page
+ * @package Controllers
+ */
 final class AdminController
 {
     /**
