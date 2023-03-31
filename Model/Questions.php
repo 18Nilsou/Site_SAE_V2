@@ -1,8 +1,20 @@
 <?php
 
+/**
+ * Model class to interact with the DB table Questions
+ *
+ * @extends Model
+ * @final
+ */
 final class Questions extends Model{
 
-    
+    /**
+     * Delete a question from the DB
+     *
+     * @param string $S_room_id The id of the room
+     * @param int $I_order_question The order of the question
+     * @return bool Whether the deletion was successful
+     */
     public static function deleteQuestion($S_room_id, $I_order_question): bool{
 
         $I_max = self::getNumberOfQuestionByRoom($S_room_id);
@@ -33,8 +45,13 @@ final class Questions extends Model{
 
         return $B_state;
     }
-    
 
+    /**
+     * Get an array of all the questions of a given room
+     *
+     * @param string $S_room The room id
+     * @return array An array containing the questions of the room
+     */
     public static function selectByRoom(string $S_room):array{
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT * FROM Questions WHERE room_id = :room_id order by order_question";
@@ -44,6 +61,13 @@ final class Questions extends Model{
         return $O_sth-> fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Get an html table of the questions of a room
+     *
+     * @param string $S_room The id of the room
+     * @param string $S_action The action the table should link to
+     * @return string The html table
+     */
     public static function getQuestionArray(string $S_room, string $S_action):string{
         $S_array = "<table><tr><th>Numéro</th><th>Titre</th><th>Consigne</th><th>Indice</th><th>Solution</th><th>Modifier</th><th>Supprimer</th></tr>";
         $A_Allquestions = self::selectByRoom($S_room);
@@ -66,6 +90,12 @@ final class Questions extends Model{
         return $S_array;
     }
 
+    /**
+     * Update a question
+     *
+     * @param array $A_postParams An array containing the new values of the question
+     * @return bool Whether the update was successful
+     */
     public static function updateQuestion(array $A_postParams): bool{
         $O_con = Connection::initConnection();
         $S_stmnt = "UPDATE QUESTIONS SET title = :title , assignement = :assignement , suggestion = :suggestion , answer = :answer WHERE order_question = :order_question and room_id = :room_id ";
@@ -81,6 +111,12 @@ final class Questions extends Model{
         return $B_state;
     }
 
+    /**
+     * Update the order of a question
+     *
+     * @param array $A_postParams An array containing the old and new order of the question
+     * @return bool Whether the update was successful
+     */
     public static function updateOrderQuestion(array $A_postParams): bool{
         $O_con = Connection::initConnection();
         $S_stmnt = "UPDATE QUESTIONS SET title = :title , assignement = :assignement , suggestion = :suggestion , answer = :answer , order_question = :order_question WHERE order_question = :order_questionold and room_id = :room_id ";
@@ -97,6 +133,12 @@ final class Questions extends Model{
         return $B_state;
     }
 
+    /**
+     * Update or delete a question depending on the data given
+     *
+     * @param array $A_postParams An array containing the data of the question
+     * @return bool Whether the update/delete was successful
+     */
     public static function form(array $A_param):bool{
         if($A_param['submit']=="Valider"){
             unset($A_param['submit']);
@@ -105,6 +147,12 @@ final class Questions extends Model{
         return self::deleteQuestion($A_param['room_id'],$A_param['order_question']);
     }
 
+    /**
+     * Get the number of questions of a given room
+     *
+     * @param string $S_room The id of the room
+     * @return int The number of questions
+     */
     public static function getNumberOfQuestionByRoom(string $S_room){
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT MAX(order_question) FROM Questions WHERE room_id = :room_id";
@@ -115,11 +163,22 @@ final class Questions extends Model{
         return $A_row['max'];
     }
 
+    /**
+     * Add a single question to the DB
+     *
+     * @param array $A_param An array containing the data of the question
+     * @return bool Whether the creation was successful
+     */
     public static function add(array $A_param){
         $A_param["order_question"] = self::getNumberOfQuestionByRoom($A_param['room_id']) + 1;
         return Questions::create($A_param);
     }
 
+    /**
+     * Add multiple questions to the DB
+     *
+     * @param array $A_questions An array containing the data of the questions
+     */
     public static function addList($A_questions){
         foreach($A_questions as $A_question){
             self::deleteQuestion($A_question["room_id"], $A_question["order_question"]);

@@ -1,6 +1,19 @@
 <?php
 
+/**
+ * Model class to interact with the DB table Whitelist
+ *
+ * @extends Model
+ * @final
+ */
 final class Whitelist extends Model {
+
+    /**
+     * Selects all entries from the Whitelist table by room id
+     *
+     * @param string $S_room Room id
+     * @return array List of entries from the Whitelist table
+     */
     public static function selectByRoom(string $S_room):array{
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT * FROM Whitelist WHERE room_id = :room_id";
@@ -10,6 +23,13 @@ final class Whitelist extends Model {
         return $O_sth-> fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Deletes an entry from the Whitelist table by room id and user id
+     *
+     * @param string $S_roomId Room id
+     * @param string $S_userId User id
+     * @return bool True if deletion was successful, False otherwise
+     */
     public static function deleteByRoomIdAndUserId(string $S_roomId, string $S_userId) {
         if(!self::checkIfExistsByRoomIdAndUserId($S_roomId, $S_userId)){
             return false;
@@ -22,6 +42,13 @@ final class Whitelist extends Model {
         return $B_state;
     }
 
+    /**
+     * Checks if an entry exists in the Whitelist table by room id and user id
+     *
+     * @param string $S_roomId Room id
+     * @param string $S_userId User id
+     * @return bool True if entry exists, False otherwise
+     */
     public static function checkIfExistsByRoomIdAndUserId(string $S_roomId, string $S_userId) {
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT * FROM whitelist WHERE ROOM_ID = ? AND USER_ID = ?";

@@ -1,6 +1,17 @@
 <?php
+
+/**
+ * Class used to read and use files
+ *
+ * @final
+ */
 final class Files{
-    
+
+    /**
+     *  Write the scores in a file.
+     *
+     *  @param array $A_Params The array containing the data of the users.
+     */
     public static function score(Array $A_Params): void{
         $O_file = fopen('Files/score.txt', 'w');
         fwrite($O_file, 'Voici les scores pour la room '.$A_Params[0]['room'].':');
@@ -11,6 +22,12 @@ final class Files{
         fclose($O_file);
     }
 
+    /**
+     *  Download a file.
+     *
+     *  @param string $S_file The name of the file.
+     *  @param string $S_dir The directory of the file.
+     */
     public static function download($S_file, $S_dir){
         header('Content-Description: File Transfer');
         header('Content-Type: application/txt');
@@ -23,6 +40,13 @@ final class Files{
         exit;
     }
 
+    /**
+     *  Read a txt file containing questions.
+     *
+     *  @param string $S_name The name of the file.
+     *  @param string $S_room_id The room id.
+     *  @return array The array containing the data of the questions.
+     */
     public static function readquestion($S_name, $S_room_id){
         $O_file = fopen($S_name, 'r');
         fgetcsv($O_file,1024);

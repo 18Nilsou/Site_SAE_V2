@@ -1,6 +1,21 @@
 <?php
+
+/**
+ * Model class to interact with the DB table Retrievepassword
+ *
+ * @extends Model
+ * @final
+ */
 final class Retrievepassword extends Model{
 
+    /**
+     * Send an email to the user containing a token
+     *
+     * @param array $A_user The array of the user
+     * @param int $I_token The token to send
+     *
+     * @return void
+     */
     public static function sendMail(array $A_user, int $I_token){
         $A_params['token'] = $I_token;
         $A_params['id'] = $A_user["id"];
@@ -12,10 +27,23 @@ final class Retrievepassword extends Model{
         }
     }
 
+    /**
+     * Generate a token
+     *
+     * @return int A random integer between 100000 and 999999
+     */
     public static function genToken(){
         return rand(100000, 999999);
     }
 
+    /**
+     * Check the validity of a token
+     *
+     * @param int $I_token The token to check
+     * @param string $S_id The user ID
+     *
+     * @return boolean True if the token is valid, false otherwise
+     */
     public static function checkToken(int $I_token, string $S_id){
         $A_usertoken = self::selectById($S_id);
         if($A_usertoken['token'] == $I_token){
@@ -28,6 +56,4 @@ final class Retrievepassword extends Model{
         }
         return false;
     }
-
-
 }

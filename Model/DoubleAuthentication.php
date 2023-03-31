@@ -1,7 +1,20 @@
 <?php
 
+/**
+ * Model class to interact with the DB table DoubleAuthentication
+ *
+ * @extends Model
+ * @final
+ */
 final class DoubleAuthentication extends Model{
 
+    /**
+     * Select one row in the DoubleAuthentication table with a token
+     *
+     * @param string $S_token Token used to select a row
+     *
+     * @return array
+     */
     public static function selectByToken(string $S_token){
         $O_con = Connection::initConnection();
         $S_stmnt = "SELECT * FROM DoubleAuthentication WHERE token = :token ";
@@ -11,6 +24,13 @@ final class DoubleAuthentication extends Model{
         return $P_sth->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Send a mail to the user in order to double authenticate
+     *
+     * @param array $A_params Parameters used to send the mail
+     *
+     * @return bool
+     */
     public static function sendmail($A_params){
         unset($A_params['password']);
         $A_params['token'] = self::genToken();
@@ -26,6 +46,11 @@ final class DoubleAuthentication extends Model{
         return false;
     }
 
+    /**
+     * Generate a token
+     *
+     * @return int
+     */
     public static function genToken(){
        return rand(100000, 999999);
     }
