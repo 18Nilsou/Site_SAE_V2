@@ -31,6 +31,7 @@ final class Questions extends Model{
         $P_sth -> bindValue(":order_question", $I_order_question, PDO::PARAM_INT);
         $B_state = $P_sth->execute();
         $O_con = null;
+
         if (isset($I_max) && $I_order_question != $I_max){
             $A_questions = self::selectByRoom($S_room_id);
             $I_num = 0;
@@ -62,19 +63,19 @@ final class Questions extends Model{
         $S_array = "<table><tr><th>Numéro</th><th>Titre</th><th>Consigne</th><th>Indice</th><th>Solution</th><th>Modifier</th><th>Supprimer</th></tr>";
         $A_Allquestions = self::selectByRoom($S_room);
         foreach($A_Allquestions as $key => $A_question){
-            $S_array .= "<form action='".$S_action."' method='post'>
-                            <input type='hidden' name='order_question' value='".$A_question["order_question"]."'>
-                            <input type='hidden' name='room_id' value='".$S_room."'>
+            $S_array .= '<form action="'.$S_action.'"method="post">
+                            <input type="hidden" name="order_question" value="'.$A_question['order_question'].'">
+                            <input type="hidden" name="room_id" value="'.$S_room.'">
                             <tr>
-                                <th>".$A_question["order_question"]."</th>
-                                <th><input type='text' name='title' maxlength='40' size='25' value='".$A_question["title"]."'></th>
-                                <th><textarea name='assignement' maxlength='255' rows='3' >".$A_question["assignement"]." </textarea></th>
-                                <th><input type='text' name='suggestion' maxlength='255' size='25' value='".$A_question["suggestion"]."'></th>
-                                <th><input type='text' name='answer'  maxlength='255' size='25' value='".$A_question["answer"]."'></th>
-                                <th><input type='submit' name='submit' id='modify' value='Modifier'></th>
-                                <th><input type='submit' name='submit' value='Supprimer' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cette question ?\")'></th>
+                                <th>'.$A_question['order_question'].'</th>
+                                <th><input type="text" name="title" maxlength="40" size="25" value="'.$A_question['title'].'"></th>
+                                <th><textarea name="assignement" maxlength="255" rows="3" >'.$A_question['assignement'].' </textarea></th>
+                                <th><input type="text" name="suggestion" maxlength="255" size="25" value="'.$A_question['suggestion'].'"></th>
+                                <th><input type="text" name="answer"  maxlength="255" size="25" value="'.$A_question['answer'].'"></th>
+                                <th><input type="submit" name="submit" id="modify" value="Modifier"></th>
+                                <th><input type="submit" name="submit" value="Supprimer" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer cette question ?\')"></th>
                             </tr>
-                        </form>";
+                        </form>';
         }
         $S_array .= "</table>";
         return $S_array;
