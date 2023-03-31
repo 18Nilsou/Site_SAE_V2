@@ -1,3 +1,7 @@
+
+// Check if the password is at least 12 characters long
+// Check if the password includes at least one uppercase, one lowercase, one number, and one symbol
+// Check if the password and confirm password match
 document.querySelector('.submit').addEventListener('click', function() {
     const password = document.querySelector('#password');
     const passwordConfirm = document.querySelector('#password_confirm');

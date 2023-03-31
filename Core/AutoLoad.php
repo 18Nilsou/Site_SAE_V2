@@ -15,7 +15,7 @@ final class AutoLoad
     /**
      * Load Core Classes
      *
-     * Loads classes from the core directory.
+     * Load classes from the core directory.
      *
      * @param string $S_className The name of the class to load.
      *
