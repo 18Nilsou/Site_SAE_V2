@@ -21,7 +21,7 @@
             <label>Pseudo : </label>
             <input type="text"  placeholder="Pseudo" name="id" required="required"><br><br>
         </div>
-        <input type="submit" value="Valider">
+        <input type="submit" value="Supprimer" onclick='return confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")'>
     </form>   
 </div>
 
@@ -44,7 +44,7 @@
             <label>Pseudo : </label>
             <input type="text"  placeholder="Pseudo" name="id" required="required"><br><br>
         </div>
-        <input type="submit" value="Valider">
+        <input type="submit" value="Supprimer" onclick='return confirm("Êtes-vous sûr de vouloir supprimer cet administrateur ?")'>
     </form>  
 </div>
 </section>

@@ -17,8 +17,9 @@ echo '<section class="tab">
             <p>Ouverture : '.date("j/m/Y H:i",strtotime($A_room['start_date'])).'</p>
             <p>Fermeture : '.date("j/m/Y H:i",strtotime($A_room['end_date'])).'</p>
             <a class="update-room" href="/admin/modifyroom/'. $A_room['id'] .'">Modifier 📝</a>
-            <a class="update-room" href="/admin/deleteroombyid/'. $A_room['id'] .'">Supprimer ❌</a>
-        </section>';
+            <a class="update-room" href="/admin/deleteroombyid/'. $A_room['id'] .'" onclick="confirmDeleteRoom(event)">Supprimer ❌</a>
+        </section>
+        <script type="text/javascript" src="/static/js/confirmDeleteRoom.js"></script>';
     }
 echo '
     </section>

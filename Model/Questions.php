@@ -58,7 +58,7 @@ final class Questions extends Model{
                                 <th><input type='text' name='suggestion' maxlength='255' size='25' value='".$A_question["suggestion"]."'></th>
                                 <th><input type='text' name='answer'  maxlength='255' size='25' value='".$A_question["answer"]."'></th>
                                 <th><input type='submit' name='submit' id='modify' value='Modifier'></th>
-                                <th><input type='submit' name='submit' value='Supprimer'></th>
+                                <th><input type='submit' name='submit' value='Supprimer' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cette question ?\")'></th>
                             </tr>
                         </form>";
         }
