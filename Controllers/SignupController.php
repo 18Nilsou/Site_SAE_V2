@@ -1,13 +1,47 @@
 <?php
+/**
+ * SignupController
+ *
+ * This class contains the default, formError, register and checkemail actions
+ * for the signup controller
+ */
 final class SignupController{
+
+    /**
+     * defaultAction
+     *
+     * This method shows the signup/form view
+     *
+     * @param Array $A_parametres The parameters array
+     * @param Array $A_postParams The post parameters array
+     * @return void
+     */
     public function defaultAction(Array $A_parametres = null, Array $A_postParams = null) : void{
         View::show("signup/form");
     }
 
+    /**
+     * formErrorAction
+     *
+     * This method shows the signup/form view with an error
+     *
+     * @param Array $A_parametres The parameters array
+     * @param Array $A_postParams The post parameters array
+     * @return void
+     */
     public function formErrorAction(Array $A_parametres = null, Array $A_postParams = null) : void{
-        View::show("signup/form", array('error' => 'Ce pseudo est déjà utilisé !'));
+        View::show("signup/form", array('error' => 'This username already exists !'));
     }
 
+    /**
+     * registerAction
+     *
+     * This method encrypts the password, checks if the email already exists and shows the checkemail/form view
+     *
+     * @param Array $A_parametres The parameters array
+     * @param Array $A_postParams The post parameters array
+     * @return void
+     */
     public function registerAction(Array $A_parametres = null, Array $A_postParams = null):void{
         $A_postParams['password'] = hash('sha512', $A_postParams['password'].$A_postParams['id']);
 
@@ -24,6 +58,15 @@ final class SignupController{
         }
     }
 
+    /**
+     * checkemailAction
+     *
+     * This method checks if the token is valid and the creation date of it, and if all is correct, creates a user and starts a session, redirecting to the home page
+     *
+     * @param Array $A_parametres The parameters array
+     * @param Array $A_postParams The post parameters array
+     * @return void
+     */
     public function checkemailAction(Array $A_parametres = null, Array $A_postParams = null){
 
         $A_checkemail = Checkemail::selectById($A_postParams['id']);
