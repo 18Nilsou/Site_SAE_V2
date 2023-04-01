@@ -13,10 +13,10 @@
                         echo '
                         <a href="/admin">Administration</a>';
                     }
-                    echo "<a href='#'>Télécharger</a>";
+                    echo "<a href='/static/FindTheBreachApp.zip'>Télécharger</a>";
                     echo "<a href='/logout'>Déconnexion</a>";
                 } else {
-                    echo "<a href='#' >Télécharger</a>";
+                    echo "<a href='/static/FindTheBreachApp.zip' >Télécharger</a>";
                     echo "<a href='/signin'>Connexion</a>";
                 }
             ?>

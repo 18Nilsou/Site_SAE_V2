@@ -1,3 +1,6 @@
+//Loop through all the edit buttons and add a click event listener
+//For each edit button, prevent the default action and add a red border to the relevant inputs
+//Change the edit button text to "Valider" and add a click event listener to the button that submits the form
 var btnsEdit = document.querySelectorAll("input[type=submit][value='Modifier']");
 
 function underline(element) {

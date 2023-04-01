@@ -1,10 +1,37 @@
 <?php
+/**
+ * SigninController
+ *
+ * This class is responsible for handling the signin process.
+ * It contains two public methods: `defaultAction` and `connectAction`,
+ * and one private method `twoauthAction`.
+ *
+ * @author
+ */
 final class SigninController{
 
+    /**
+     * defaultAction
+     *
+     * This method is responsible for displaying the signin form.
+     *
+     * @return void
+     */
     public function defaultAction() : void{
         View::show("signin/form");
     }
 
+    /**
+     * connectAction
+     *
+     * This method is responsible for checking the user's credentials
+     * and sending a confirmation email if they are valid.
+     *
+     * @param Array $A_parametres
+     * @param Array $A_postParams
+     *
+     * @return void
+     */
     public function connectAction(Array $A_parametres = null, Array $A_postParams = null) : void{
         if(Users::isUser($A_postParams) != "Mot de passe ou Pseudo invalide" && DoubleAuthentication::sendMail($A_postParams)){
             View::show("2AF/form");
@@ -14,7 +41,18 @@ final class SigninController{
         }
     }
 
-
+    /**
+     * twoauthAction
+     *
+     * This method is responsible for checking the confirmation email
+     * and if it has been sent within the last 10 minutes.
+     * If the confirmation is valid, the user is logged in.
+     *
+     * @param Array $A_parametres
+     * @param Array $A_postParams
+     *
+     * @return void
+     */
     public function twoauthAction(Array $A_parametres = null, Array $A_postParams = null){
 
         $A_checkemail = DoubleAuthentication::selectByToken($A_postParams['token']);

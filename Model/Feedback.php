@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Model class to interact with the DB table Feedback
+ *
+ * @extends Model
+ * @final
+ */
 final class Feedback extends Model{
     public static function deleteByUser($S_id): bool{
         $O_con = Connection::initConnection();

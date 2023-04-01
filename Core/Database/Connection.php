@@ -14,7 +14,7 @@ final class Connection
      * @param string $user The username of the database
      * @param string $password The password of the database
      *
-     * @return PDO|null The PDO connection
+     * @return PDO The PDO connection
      */
     public static function connect(String $host,String $user,String $password) : PDO
     {
@@ -32,7 +32,7 @@ final class Connection
     /**
      * Initialize the connection with the database
      *
-     * @return PDO|null The PDO connection
+     * @return PDO The PDO connection
      */
     public static function initConnection() : PDO
     {

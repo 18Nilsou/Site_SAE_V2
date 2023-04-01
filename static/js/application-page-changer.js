@@ -1,3 +1,8 @@
+// SlideShow() is a function that loops through the images displayed in the page.
+// It selects all the elements with the class name 'page', then iterates over them, setting the display property to 'none'.
+// It then increments the indexValue variable, and if it's greater than the page length, it resets it to 1.
+// The current page element is then set to display block, and the setTimeOut() method is used to call the SlideShow() function again, after a 6 second delay.
+
 let indexValue = 0;
 function slideShow(){
     let x;
