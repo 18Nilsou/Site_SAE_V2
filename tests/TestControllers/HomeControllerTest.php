@@ -6,9 +6,9 @@ use PHPUnit\Framework\TestCase;
 
 class HomeControllerTest extends TestCase
 {
-    public function testDefaultAction()
-    {
+    public function testDefaultAction(){
         $homeController = new HomeController();
-        $this->assertNull($homeController->defaultAction());
+        $this->assertEquals(View::show("home/home"),$homeController->defaultAction());
     }
+
 }

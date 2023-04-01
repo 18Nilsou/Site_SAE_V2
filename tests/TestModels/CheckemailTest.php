@@ -9,9 +9,9 @@ class CheckemailTest extends TestCase
 {
     public function testGenToken(): void
     {
-        $result = Checkemail::genToken('myId');
-        $this->assertIsString($result);
-        $this->assertGreaterThan(0, strlen($result));
+        $result = Checkemail::genToken();
+        $this->assertIsInt($result);
+        $this->assertGreaterThan(99999, $result);
     }
 
 }

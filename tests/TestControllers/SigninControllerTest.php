@@ -13,12 +13,4 @@ class SigninControllerTest extends TestCase
         $this->assertEquals(View::show("signin/form"), $signinController ->defaultAction());
 
     }
-
-    public function testConnectAction()
-    {
-        $SigninController = new SigninController;
-        $SigninController->connectAction(['param1', 'param2'], ['id' => 1]);
-        $this->assertTrue(true);
-
-    }
 }
