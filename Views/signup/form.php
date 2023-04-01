@@ -1,4 +1,4 @@
-<<?php
+<?php
 echo '
 <section id="form-container">
     <form class="signForm" method="post" action="/Signup/register">

@@ -12,8 +12,8 @@ final class SignupController{
      *
      * This method shows the signup/form view
      *
-     * @param Array $A_parametres The parameters array
-     * @param Array $A_postParams The post parameters array
+     * @param array|null $A_parametres The parameters array
+     * @param array|null $A_postParams The post parameters array
      * @return void
      */
     public function defaultAction(Array $A_parametres = null, Array $A_postParams = null) : void{
@@ -25,12 +25,12 @@ final class SignupController{
      *
      * This method shows the signup/form view with an error
      *
-     * @param Array $A_parametres The parameters array
-     * @param Array $A_postParams The post parameters array
+     * @param array|null $A_parametres The parameters array
+     * @param array|null $A_postParams The post parameters array
      * @return void
      */
     public function formErrorAction(Array $A_parametres = null, Array $A_postParams = null) : void{
-        View::show("signup/form", array('error' => 'This username already exists !'));
+        View::show("signup/form", array('error' => 'Ce nom d\'utilisateur est déjà utilisé !'));
     }
 
     /**
@@ -38,22 +38,19 @@ final class SignupController{
      *
      * This method encrypts the password, checks if the email already exists and shows the checkemail/form view
      *
-     * @param Array $A_parametres The parameters array
-     * @param Array $A_postParams The post parameters array
+     * @param array|null $A_parametres The parameters array
+     * @param array|null $A_postParams The post parameters array
      * @return void
      */
     public function registerAction(Array $A_parametres = null, Array $A_postParams = null):void{
         $A_postParams['password'] = hash('sha512', $A_postParams['password'].$A_postParams['id']);
 
-        if(!Users::checkIfExistsByEmail($A_postParams['email'])){
-            if (!Users::checkIfExistsByEmail($A_postParams['id'])){
-                header("location: /signup/formError");
-                exit;
-            }
+        if (Users::checkIfExistsById($A_postParams['id'])){
+            header("location: /signup/formError");
+            exit;
+        } else{
             Checkemail::sendMail($A_postParams['id'], $A_postParams['email']);
             View::show("checkemail/form",$A_postParams);
-        }else{
-            header("location: /signup");
             exit;
         }
     }
@@ -63,8 +60,8 @@ final class SignupController{
      *
      * This method checks if the token is valid and the creation date of it, and if all is correct, creates a user and starts a session, redirecting to the home page
      *
-     * @param Array $A_parametres The parameters array
-     * @param Array $A_postParams The post parameters array
+     * @param array|null $A_parametres The parameters array
+     * @param array|null $A_postParams The post parameters array
      * @return void
      */
     public function checkemailAction(Array $A_parametres = null, Array $A_postParams = null){
