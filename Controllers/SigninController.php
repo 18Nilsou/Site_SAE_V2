@@ -48,8 +48,8 @@ final class SigninController{
      * and if it has been sent within the last 10 minutes.
      * If the confirmation is valid, the user is logged in.
      *
-     * @param Array $A_parametres
-     * @param Array $A_postParams
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
      *
      * @return void
      */
@@ -58,10 +58,8 @@ final class SigninController{
         $A_checkemail = DoubleAuthentication::selectByToken($A_postParams['token']);
 
         $I_date = mktime(date("H"), date("i")-10, date("s"), date("m"), date("d"), date("Y"));
-        $S_date = date("d-M-Y H:i",$I_date);
-
-        if ($A_postParams['token'] == $A_checkemail['token'] && $A_checkemail['creation_date'] < $S_date){
-
+        $S_date = date("Y-m-d H:i:s",$I_date);
+        if ($A_postParams['token'] == $A_checkemail['token'] && $A_checkemail['creation_date'] > $S_date){
             DoubleAuthentication::deleteByID($A_postParams['id']);
             $S_status = Users::getStatus($A_postParams['id']);
             switch ($S_status) {
@@ -74,6 +72,9 @@ final class SigninController{
                     header("Location: /signin");
                     exit;
             }
+        } else {
+            header("Location: /signin");
+            exit;
         }
     }
 }

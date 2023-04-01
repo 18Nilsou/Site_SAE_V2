@@ -7,6 +7,8 @@ View::openBuffer();
 
 session_start();
 
+date_default_timezone_set('Europe/Paris');
+
 try{
     $O_controller = new Controller($S_urlToPeer, $A_postParams);
     $O_controller->execute();
