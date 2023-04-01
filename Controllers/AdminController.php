@@ -373,8 +373,11 @@ final class AdminController
         $S_path = 'Files/ '.$_FILES['file']['name'];
         move_uploaded_file($S_origin,$S_path);
         $A_questions = Files::readquestion($S_path, $A_postParams['room_id']);
-        Questions::addList($A_questions);
         unlink($S_path);
+        Questions::deleteByRoom($A_questions[0]["room_id"]);
+        foreach($A_questions as $A_question){
+            Questions::create($A_question);
+        }
         header("location: /admin");
     }
 }

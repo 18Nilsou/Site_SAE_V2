@@ -24,6 +24,17 @@ final class Questions extends Model{
         return $B_state;
     }
 
+
+    public static function selectOne($S_room_id, $I_order_question){
+        $O_con = Connection::initConnection();
+        $S_stmnt = "SELECT * FROM QUESTIONS WHERE order_question = :order_question and room_id = :room_id ";
+        $P_sth = $O_con->prepare($S_stmnt);
+        $P_sth -> bindValue(":room_id", $S_room_id, PDO::PARAM_STR);
+        $P_sth -> bindValue(":order_question", $I_order_question, PDO::PARAM_INT);
+        $P_sth -> execute();
+        return $P_sth -> fetch();
+    }
+
     /**
      * Delete a question from the DB
      *
@@ -32,9 +43,7 @@ final class Questions extends Model{
      * @return bool Whether the deletion was successful
      */
     public static function deleteQuestion($S_room_id, $I_order_question): bool{
-
         $I_max = self::getNumberOfQuestionByRoom($S_room_id);
-
         $O_con = Connection::initConnection();
         $S_stmnt = "DELETE FROM QUESTIONS WHERE order_question = :order_question and room_id = :room_id ";
         $P_sth = $O_con->prepare($S_stmnt);
@@ -43,10 +52,9 @@ final class Questions extends Model{
         $B_state = $P_sth->execute();
         $O_con = null;
 
-        if ($I_order_question != $I_max){
+        if (isset($I_max) && $I_order_question != $I_max){
             $A_questions = self::selectByRoom($S_room_id);
             $I_num = 0;
-
             while($A_questions[$I_num]['order_question'] < $I_order_question){
                 unset($A_questions[$I_num]);
                 ++$I_num;
@@ -54,7 +62,6 @@ final class Questions extends Model{
             foreach($A_questions as $A_question){
                 $A_question['order_questionold'] = $A_question['order_question'];
                 $A_question['order_question'] = $A_question['order_question'] - 1;
-                var_dump($A_question['order_questionold']);
                 self::updateOrderQuestion($A_question);
             }
         }
@@ -88,19 +95,19 @@ final class Questions extends Model{
         $S_array = "<table><tr><th>Numéro</th><th>Titre</th><th>Consigne</th><th>Indice</th><th>Solution</th><th>Modifier</th><th>Supprimer</th></tr>";
         $A_Allquestions = self::selectByRoom($S_room);
         foreach($A_Allquestions as $key => $A_question){
-            $S_array .= "<form action='".$S_action."' method='post'>
-                            <input type='hidden' name='order_question' value='".$A_question["order_question"]."'>
-                            <input type='hidden' name='room_id' value='".$S_room."'>
+            $S_array .= '<form action="'.$S_action.'"method="post">
+                            <input type="hidden" name="order_question" value="'.$A_question['order_question'].'">
+                            <input type="hidden" name="room_id" value="'.$S_room.'">
                             <tr>
-                                <th>".$A_question["order_question"]."</th>
-                                <th><input type='text' name='title' maxlength='40' size='25' value='".$A_question["title"]."'></th>
-                                <th><textarea name='assignement' maxlength='255' rows='3' >".$A_question["assignement"]." </textarea></th>
-                                <th><input type='text' name='suggestion' maxlength='255' size='25' value='".$A_question["suggestion"]."'></th>
-                                <th><input type='text' name='answer'  maxlength='255' size='25' value='".$A_question["answer"]."'></th>
-                                <th><input type='submit' name='submit' id='modify' value='Modifier'></th>
-                                <th><input type='submit' name='submit' value='Supprimer' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cette question ?\")'></th>
+                                <th>'.$A_question['order_question'].'</th>
+                                <th><input type="text" name="title" maxlength="40" size="25" value="'.$A_question['title'].'"></th>
+                                <th><textarea name="assignement" maxlength="255" rows="3" >'.$A_question['assignement'].' </textarea></th>
+                                <th><input type="text" name="suggestion" maxlength="255" size="25" value="'.$A_question['suggestion'].'"></th>
+                                <th><input type="text" name="answer"  maxlength="255" size="25" value="'.$A_question['answer'].'"></th>
+                                <th><input type="submit" name="submit" id="modify" value="Modifier"></th>
+                                <th><input type="submit" name="submit" value="Supprimer" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer cette question ?\')"></th>
                             </tr>
-                        </form>";
+                        </form>';
         }
         $S_array .= "</table>";
         return $S_array;
@@ -201,4 +208,5 @@ final class Questions extends Model{
             Questions::create($A_question);
         }
     }
+
 }

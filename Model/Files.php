@@ -31,7 +31,7 @@ final class Files{
     public static function download($S_file, $S_dir){
         header('Content-Description: File Transfer');
         header('Content-Type: application/txt');
-            header('Content-Disposition: attachment; filename='.$S_file);
+        header('Content-Disposition: attachment; filename=listequestion.csv');
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
@@ -48,23 +48,36 @@ final class Files{
      *  @return array The array containing the data of the questions.
      */
     public static function readquestion($S_name, $S_room_id){
+        
         $O_file = fopen($S_name, 'r');
+        $I_order = 1;
         fgetcsv($O_file,1024);
         while (!feof($O_file) ) {
             $A_question = fgetcsv($O_file,1024);
-            if (strlen($A_question[1]) < 40 && strlen($A_question[2]) < 255 &&
-                strlen($A_question[3]) < 255 && strlen($A_question[4]) < 255 && strlen($S_room_id) < 10){
+            if (strlen($A_question[0]) < 40 && strlen($A_question[1]) < 255 &&
+                strlen($A_question[2]) < 255 && strlen($A_question[3]) < 255){
 
                 $A_questions[] = [
-                "order_question" => $A_question[0],
-                "title" =>$A_question[1],
-                "assignement" =>$A_question[2],
-                "answer" =>$A_question[3],
-                "suggestion" => $A_question[4],
+                "order_question" => $I_order,
+                "title" =>$A_question[0],
+                "assignement" =>$A_question[1],
+                "answer" =>$A_question[2],
+                "suggestion" => $A_question[3],
                 "room_id" =>$S_room_id
                 ];
 
             }
+            else{
+                $A_questions[] = [
+                    "order_question" => $I_order,
+                    "title" =>"Question trop longue",
+                    "assignement" =>"Question trop longue",
+                    "answer" =>"Question trop longue",
+                    "suggestion" =>"Question trop longue",
+                    "room_id" =>$S_room_id
+                    ];
+            }
+            ++$I_order;
         }
         fclose($O_file);
         return $A_questions;
