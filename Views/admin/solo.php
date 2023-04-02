@@ -15,13 +15,13 @@
                 <input type="radio" id="practice" name="room_id" value="practice">
             </div>
             <label>Titre de la question : </label>
-            <input type="text"  placeholder="Titre" name="title" maxlength="40" required="required"><br/>
+            <input type="text"  placeholder="Titre" name="title" maxlength="100" required="required"><br/>
             <label>Consigne :</label>
-            <textarea name="assignement" rows="5" cols="30" maxlength="255" placeholder="Consigne" aria-required="true"></textarea><br/>
+            <textarea name="assignement" rows="5" cols="30" maxlength="500" placeholder="Consigne" aria-required="true"></textarea><br/>
             <label>Réponse : </label>
-            <input type="text"  placeholder="Réponse" name="answer" maxlength="255" required="required"><br/>
+            <input type="text"  placeholder="Réponse" name="answer" maxlength="500" required="required"><br/>
             <label>Indice : </label>
-            <textarea name="suggestion" rows="5" cols="30" maxlength="255" placeholder="Indice" aria-required="true"></textarea><br/>
+            <textarea name="suggestion" rows="5" cols="30" maxlength="500" placeholder="Indice" aria-required="true"></textarea><br/>
             <input type="submit" value="Valider">
         </form>
         <form class="questionForm" method="post"  enctype='multipart/form-data' action="admin/getquestionfromfile">

@@ -63,13 +63,13 @@ echo '
                 <h3>Ajouter une question</h3>
                 <input type="hidden" name="room_id" value='. $A_view['room']['id'] .'>
                 <label>Titre de la question : </label>
-                <input type="text"  placeholder="Titre" name="title" required="required"><br/>
+                <input type="text"  placeholder="Titre" name="title" required="required" maxlength="100"><br/>
                 <label>Consigne :</label>
-                <textarea name="assignement" rows="5" cols="30"  placeholder="Consigne" aria-required="true"></textarea><br/>
+                <textarea name="assignement" rows="5" cols="30"  placeholder="Consigne" aria-required="true" maxlength="500"></textarea><br/>
                 <label>Réponse : </label>
-                <input type="text"  placeholder="Réponse" name="answer" required="required"><br/>
+                <input type="text"  placeholder="Réponse" name="answer" required="required" maxlength="500"><br/>
                 <label>Indice : </label>
-                <textarea name="suggestion" rows="5" cols="30"  placeholder="Indice" aria-required="true"></textarea><br/>
+                <textarea name="suggestion" rows="5" cols="30"  placeholder="Indice" aria-required="true" maxlength="500"></textarea><br/>
                 <input type="submit" value="Valider">
             </form>';
         echo($A_view['questions']);
