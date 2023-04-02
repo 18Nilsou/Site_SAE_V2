@@ -53,6 +53,15 @@
     border-radius: 0.5em;
 }
 
+#getScore{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#getScore input{
+    font-size: 150%;
+}
+
 #invite-users-form {
     display: flex;
     align-items: center;
