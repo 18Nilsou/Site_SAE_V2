@@ -343,6 +343,16 @@ final class AdminController
         Files::download("score.txt","Files/score.txt");
     }
 
+
+    public function getScoreRoomAction(Array $A_parametres = null, Array $A_postParams = null) : void{
+        if (!Session::isAdmin()) {
+            header("location: /signin");
+            exit;
+        }
+        Files::score(Rooms::getScoreRoom($A_postParams));
+        Files::download("score.txt","Files/score.txt");
+    }
+
     /**
      * Redirects to the home page if the user is not an admin,
      * else generates an example of csv file and download it
@@ -356,7 +366,7 @@ final class AdminController
             header("location: /home");
             exit;
         }
-        Files::download("questions.csv","Files/questions.csv");
+        Files::download("ListeDesQuestions.csv","Files/questions.csv");
     }
 
     /**

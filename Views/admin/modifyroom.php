@@ -32,8 +32,18 @@ echo '<section class="tab">
             }
             echo '<p id="unSignedUsers">'.$S_users.'</p>';
         }
+ echo '</section>
+        <section class="multiplayer-containers">
+        <h3>Recupérer les scores</h3>
+        <form action="/admin/getScoreRoom" method="post" id="getScore">
+                <input type="hidden" name="room_id" value='.$A_view['room']['id'].'>
+                <input type="submit" value="Récuperer">
+        </form>
+        </section>
+        
+';
 echo '
-    </section>
+            
     <section class="multiplayer-containers">
          <form action="/admin/modifyroomdates" method="post">
             <h3>Modification date d\'ouverture et de fermeture de la salle</h3>
