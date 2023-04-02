@@ -24,6 +24,9 @@ echo '
         <label for="passwordConfirm">Confirmation de passe :</label>
         <input class="id-form-input" id="password_confirm" type="password" placeholder="Confirmation du mot de passe" title="Confirmation du mot de passe" required >
         <p class="redirections-sign">Déjà inscris ? <a href="/signin">Connectez vous !</a></p>
+        <section id="cgu-container">
+            <input type="checkbox">J\'accepte les <a href="/legalnotice/generaltermsofuse" target="_blank">Conditions Générales d\'Utilisation</a></input>
+        </section>
         <input class="submit" type="submit">
     </form>
 </section>

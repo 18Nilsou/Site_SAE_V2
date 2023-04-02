@@ -109,6 +109,11 @@
     text-align: center;
 }
 
+#cgu-container {
+    text-align: center;
+    font-size: 0.7em;
+}
+
 @-webkit-keyframes pulse {
     0% {
         -webkit-transform: scale3d(1, 1, 1);
