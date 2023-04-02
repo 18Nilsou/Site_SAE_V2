@@ -137,17 +137,6 @@ final class AdminController
             $A_paramForView['topFive'] = $A_topFive;
         }
         View::show("admin/modifyroom", $A_paramForView);
-
-        /*
-        if (isset($A_parametres[1])) {
-            View::show("admin/modifyroom", array('room' => $A_room,
-                'questions' => Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom"),
-                'guestUsers' => $A_guestUsers, 'unSignedUsers' => $A_parametres[1]));
-        } else {
-            View::show("admin/modifyroom", array('room' => $A_room,
-                'questions' => Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom"),
-                'guestUsers' => $A_guestUsers));
-        }*/
     }
 
     /**
