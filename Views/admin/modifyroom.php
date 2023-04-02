@@ -33,15 +33,46 @@ echo '<section class="tab">
             echo '<p id="unSignedUsers">'.$S_users.'</p>';
         }
  echo '</section>
-        <section class="multiplayer-containers">
+        <section class="multiplayer-containers">';
+
+if (isset($A_view['topFive'])){
+    echo '<h3>Top 5</h3>
+    <section id="top5"> <p>';
+    foreach($A_view['topFive'] as $A_score){
+        echo ($A_score['score']. ' : ' .$A_score['user_id'].' '.$A_score['name'].' ' .$A_score['lastname'] . '<br><br>');
+    }
+    echo "</p></section>";
+}
+
+echo'
         <h3>Recupérer les scores</h3>
         <form action="/admin/getScoreRoom" method="post" id="getScore">
                 <input type="hidden" name="room_id" value='.$A_view['room']['id'].'>
                 <input type="submit" value="Récuperer">
         </form>
         </section>
-        
 ';
+echo '
+<section class="multiplayer-containers">
+<h3>Les commentaires</h3>';
+if (isset($A_view['feedback'])){
+
+   echo' <div class="feedbacks">';
+foreach ($A_view['feedback'] as $A_feedback){
+    echo '<div class="comment">
+            <p>De '.$A_feedback['user_id'] .' ' .$A_feedback['name'] .' '.$A_feedback['lastname'].' <br><br>
+                Note : '.$A_feedback['rating'].'/5  <br> 
+                Le commentaire : '.$A_feedback['comment'].'</p>
+            <br>
+        </div>';
+}
+echo'</div>';
+}else{
+    echo '<h3>Pas de commentaire</h3>';
+}
+
+echo '</section>';
+
 echo '
             
     <section class="multiplayer-containers">
