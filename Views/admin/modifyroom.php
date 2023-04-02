@@ -24,7 +24,7 @@ echo '<section class="tab">
                 <input type="submit" class="black-button" value="Désinscrire">
             </section>
         </form>';
-        if (isset($A_view['unSignedUsers'])) {
+        if (isset($A_view['unSignedUsers']) && $A_view['unSignedUsers'] != []) {
             $S_users = '';
             echo '<h3>Utilisateurs qui n\'ont pas été invités car ils ne sont pas inscrits</h3>';
             foreach ($A_view['unSignedUsers'] as $user) {

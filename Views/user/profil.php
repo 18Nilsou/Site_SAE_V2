@@ -1,7 +1,7 @@
 <div class="user">
 <h1>Mon compte</h1>
 <div class="compte">
-<h1>Mon Profile</h1>
+<h1>Mon Profil</h1>
 <?php
 echo '
 <p>

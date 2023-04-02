@@ -87,6 +87,9 @@ final class AdminController
      */
     public function deleteroombyidAction(Array $A_parametres = null, Array $A_postParams = null):void {
         if (Rooms::selectById($A_parametres[0])['admin_id'] == Session::getSession()['id']) {
+            Scores::deleteByRoom($A_parametres[0]);
+            Whitelist::deleteByRoom($A_parametres[0]);
+            Questions::deleteByRoom($A_parametres[0]);
             Rooms::deleteByID($A_parametres[0]);
         }
         header('Location: /admin/multiplayer');
