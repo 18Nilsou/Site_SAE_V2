@@ -12,9 +12,9 @@ final class UserController{
      */
     public function defaultAction(): void{
         if(Session::getSession()){
-            View::show("User/profil", Users::selectById(Session::getSession()['id']));
-            View::show("User/score", Users::selectMyScore(Session::getSession()['id']));
-            View::show("User/feed-back", Users::selectMyFeedBack(Session::getSession()['id']));
+            View::show("user/profil", Users::selectById(Session::getSession()['id']));
+            View::show("user/score", Users::selectMyScore(Session::getSession()['id']));
+            View::show("user/feed-back", Users::selectMyFeedBack(Session::getSession()['id']));
         }
     }
 
