@@ -117,6 +117,28 @@ final class AdminController
         foreach ($A_guests as $A_guest) {
             $A_guestUsers[] = Users::selectById($A_guest['user_id']);
         }
+
+
+        $A_feeback = Feedback::selectByRoom($A_room['id']);
+        $A_topFive = Scores::topFive($A_room['id']);
+
+       
+        $A_paramForView['room'] = $A_room;
+        $A_paramForView['questions'] = Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom");
+        $A_paramForView['guestUsers'] = $A_guestUsers;
+
+        if(isset($A_parametres[1])){
+            $A_paramForView['unSignedUsers'] = $A_parametres[1];
+        }
+        if(isset($A_feeback)){
+            $A_paramForView['feedback'] = $A_feeback;
+        }
+        if(isset($A_topFive)){
+            $A_paramForView['topFive'] = $A_topFive;
+        }
+        View::show("admin/modifyroom", $A_paramForView);
+
+        /*
         if (isset($A_parametres[1])) {
             View::show("admin/modifyroom", array('room' => $A_room,
                 'questions' => Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom"),
@@ -125,7 +147,7 @@ final class AdminController
             View::show("admin/modifyroom", array('room' => $A_room,
                 'questions' => Questions::getQuestionArray($A_parametres[0], "/admin/modifyOrDeleteQuestionRoom"),
                 'guestUsers' => $A_guestUsers));
-        }
+        }*/
     }
 
     /**
@@ -343,7 +365,14 @@ final class AdminController
         Files::download("score.txt","Files/score.txt");
     }
 
-
+        /**
+     * Redirects to the home page if the user is not an admin,
+     * else generates a csv file with the scores requested and download it
+     *
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
+     * @return void
+     */
     public function getScoreRoomAction(Array $A_parametres = null, Array $A_postParams = null) : void{
         if (!Session::isAdmin()) {
             header("location: /signin");

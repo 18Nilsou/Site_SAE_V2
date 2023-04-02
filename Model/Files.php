@@ -16,7 +16,7 @@ final class Files{
         $O_file = fopen('Files/score.txt', 'w');
         fwrite($O_file, 'Voici les scores pour la room '.$A_Params[0]['room'].':');
         foreach($A_Params as $A_data){
-            $S_text = "\n" .  $A_data['name'] .' '. $A_data['user_id']  .' '. $A_data['lastname']  ." : " . $A_data['score'];
+            $S_text = "\n" .  $A_data['user_id'] .' '. $A_data['name']  .' '. $A_data['lastname']  ." : " . $A_data['score'];
             fwrite($O_file, $S_text);
         }
         fclose($O_file);
