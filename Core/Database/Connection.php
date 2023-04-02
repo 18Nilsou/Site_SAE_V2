@@ -36,7 +36,7 @@ final class Connection
      */
     public static function initConnection() : PDO
     {
-        return Connection::connect("kandula.db.elephantsql.com","dyfslksj","E__SWO4Kvj3Luu3YyYXoxsCHJhqGYm17");
+        return Connection::connect("kandula.db.elephantsql.com","dyfslksj","");
     }
 
 }

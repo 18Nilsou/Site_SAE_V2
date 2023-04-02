@@ -28,7 +28,7 @@ echo '
             <h3>Créer un salon</h3>
                 <section>
                     <label for="room-name">Nom du salon :</label>
-                    <input type="text" name="name" required>
+                    <input type="text" name="name" required maxlength="30">
                 </section>
                 <section>
                     <label for="start_date">Date d\'ouverture :</label>
