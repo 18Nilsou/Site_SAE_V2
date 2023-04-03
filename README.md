@@ -43,7 +43,11 @@ docker run -d -p 80 :80 fredegen/sitesaes4:VOTRE ARCHITECTURE PROCESSEUR
 ```
 
 Il est compatible avec deux architectures, amd64 et arm64 qui sont les deux plus courantes actuellement. Il faut donc remplacer VOTRE ARCHITECTURE PROCESSEUR par celle qui vous concerne.
-Remarque : Pour des soucis de sécurité si vous voulez héberger le site fraichement télécharger depuis GitHub, il faudra aller dans le répertoire “Core/Database/” et modifier le fichier Connection.php.
+
+---
+
+**Remarque** : Pour des soucis de sécurité si vous voulez héberger le site fraichement télécharger depuis GitHub, il faudra aller dans le répertoire “Core/Database/” et modifier le fichier Connection.php.
+
 Vous allez trouver à la ligne 39 ce code :
 
 ```php
